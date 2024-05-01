@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('nomor_telepon');
             $table->string('email');
             $table->string('kode_pos');
-            $table->string('deskripsi_sejarah');
-            $table->string('visi_misi');
+            $table->text('deskripsi_sejarah');
+            $table->text('visi_misi');
             $table->string('motto');
-            $table->string('sambuatan_kepsek');
+            $table->text('sambuatan_kepsek');
             $table->string('tujuan_sekolah');
             $table->string('logo_sekolah');
             $table->timestamps();

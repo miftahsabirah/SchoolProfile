@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('kurikulum', function (Blueprint $table) {
             $table->id();
             $table->string('jenis_kurikulum');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->string('file_kurikulum');
             $table->timestamps();
         });
