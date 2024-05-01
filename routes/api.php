@@ -1,5 +1,11 @@
 <?php
 
+use App\Http\Controllers\GuruKaryawanController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\InformasiController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileSekolahController;
+use App\Http\Controllers\SiswaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +20,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('login', [LoginController::class, 'index']);
+Route::post('loginn', [LoginController::class, 'login']);
+
+Route::get('profile', [ProfileSekolahController::class, 'indexprofileschool']);
+Route::get('getguru', [GuruKaryawanController::class, 'indexGuru']);
+Route::get('getgaleri', [ImageController::class, 'indexgaleri']);
+Route::get('getinformasi', [InformasiController::class, 'indexinformasi']);
+Route::get('getsiswa', [SiswaController::class, 'indexsiswa']);
+Route::get('getsarpras', [ImageController::class, 'indexsarpras']);
+

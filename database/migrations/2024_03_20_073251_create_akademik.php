@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('semester');
             $table->date('tanggal_mulai');
             $table->date('tanggal_selesai');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->string('file_berkas');
             $table->timestamps();
 
