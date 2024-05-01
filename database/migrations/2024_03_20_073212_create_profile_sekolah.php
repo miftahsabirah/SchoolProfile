@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nomor_telepon');
             $table->string('email');
             $table->string('kode_pos');
+
             $table->text('deskripsi_sejarah');
             $table->text('visi_misi');
             $table->string('motto');
