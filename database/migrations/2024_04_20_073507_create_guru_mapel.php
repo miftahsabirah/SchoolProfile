@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('guru_mapel', function (Blueprint $table) {
             $table->id();
-
-            $table->string('username')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->enum('role', ['admin','guru']);
-            $table->rememberToken();
+            $table->unsignedBigInteger('guru_karyawan_id');
+            $table->unsignedBigInteger('mata_pelajaran_id');
             $table->timestamps();
+
+            $table->foreign('guru_karyawan_id')->references('id')->on('guru_karyawan');
+            $table->foreign('mata_pelajaran_id')->references('id')->on('mata_pelajaran');
         });
     }
 
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('guru_mapel');
     }
 };
