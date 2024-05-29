@@ -28,6 +28,7 @@ Route::get('indexxx', [LoginController::class, 'index']);
 Route::post('login', [LoginController::class, 'login']);
 
 Route::get('profile', [ProfileSekolahController::class, 'indexprofileschool']);
+Route::put('updateprofile1/{id}', [ProfileSekolahController::class, 'updateprofile1']);
 
 
 
