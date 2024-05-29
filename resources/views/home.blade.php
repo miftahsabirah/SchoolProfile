@@ -51,9 +51,9 @@ Home
 </div>
 
 {{-- video di profil --}}
-<div class="flex items-center justify-center mt-24 mb-24">
+<div class="flex flex-col xl:flex-row items-center justify-center mt-24 mb-24">
     <!-- Video -->
-    <div class="w-2/5 flex items-center justify-end">
+    <div class="w-2/5 flex xl:mb-0 md:mb-10 sm:mb-10 items-center justify-end">
         <video class="w-96 rounded-md" controls>
             <source src="/docs/videos/flowbite.mp4" type="video/mp4">
             Your browser does not support the video tag.
@@ -61,7 +61,7 @@ Home
     </div>
 
     <!-- Teks -->
-    <div class="w-3/5 ml-20">
+    <div class="lg:w-3/5 lg:ml-20 lg:order-1">
         <div class="w-20 h-2 bg-orange-600 mb-6"></div>
         <p class="text-3xl font-bold text-gray-900 mb-6">SDN Ciren 1</p>
         <p class="text-base text-gray-500 max-w-xl mb-6">
@@ -79,162 +79,178 @@ Home
 
 {{-- image slider untuk prestasi mahasiswa --}}
 
-<div class="relative bg-whiite px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
-    <div class="absolute inset-0">
-    <div class="h-1/3 bg-white sm:h-2/3"></div>
-    </div>
-    <div class="relative mx-auto max-w-7xl">
-    <div class="text-center">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Prestasi Siswa</h2>
-        <p class="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">
-            Informasi prestasi siswa dapat dilihat dibawah ini
+
+<div class="lg:py-16 py-8">
+    <div class="px-4 mx-auto mb-2 max-w-screen-md text-center md:mb-3 lg:px-0">
+        <p class="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 md:text-4xl">
+            Prestasi Mahasiswa
         </p>
-    </div>
 
-    {{-- bagian slidernya --}}
-    <div class="flex">
-        <div class="w-1/12 flex items-center">
-            <div class="w-full text-right">
-                <button class="p-3 rounded-full bg-orange-600 border mr-8">
-                    <svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-                    </svg>
-                </button>
-            </div>
+        <div>
+            <p class="mx-auto mt-3 mb-10 max-w-2xl text-xl text-gray-500 sm:mt-4">
+                Informasi prestasi siswa dapat dilihat dibawah ini
+            </p>
         </div>
-
-            <div id="sliderContainer" class=" w-full mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
-
-                <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
-                <div class="flex-shrink-0">
-                    <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80" alt="">
-                </div>
-                <div class="flex flex-1 flex-col justify-between bg-white p-6">
-                    <div class="flex-1">
-                    <p class="text-sm font-medium text-indigo-600">
-                        <a href="#" class="hover:underline">Article</a>
-                    </p>
-                    <a href="#" class="mt-2 block">
-                        <p class="text-xl font-semibold text-gray-900">Boost your conversion rate</p>
-                        <p class="mt-3 text-base text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.</p>
-                    </a>
-                    </div>
-                    <div class="mt-6 flex items-center">
-                    <div class="flex-shrink-0">
-                        <a href="#">
-                        <span class="sr-only">Roel Aufderehar</span>
-                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
-                        </a>
-                    </div>
-                    <div class="ml-3">
-                        <p class="text-sm font-medium text-gray-900">
-                        <a href="#" class="hover:underline">Roel Aufderehar</a>
-                        </p>
-                        <div class="flex space-x-1 text-sm text-gray-500">
-                        <time datetime="2020-03-16">Mar 16, 2020</time>
-                        <span aria-hidden="true">·</span>
-                        <span>6 min read</span>
+    </div>
+    <div class="mx-auto max-w-screen-xl">
+        <div id="animation-carousel" class="relative px-16 sm:px-24" data-carousel="slide">
+            <div class="overflow-hidden relative h-[75vh] rounded-lg">
+                <div class="grid hidden absolute inset-0 gap-8 transition-all duration-700 ease-linear transform lg:grid-cols-3"
+                    data-carousel-item="">
+                    <div class="block w-full h-full rounded-lg">
+                        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+                            <div class="flex-shrink-0">
+                                <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80" alt="">
+                            </div>
+                            <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                                <div class="flex-1">
+                                <p class="text-sm font-medium text-indigo-600">
+                                    <a href="#" class="hover:underline">Article</a>
+                                </p>
+                                <a href="#" class="mt-2 block">
+                                    <p class="text-xl font-semibold text-gray-900">Boost your conversion rate</p>
+                                    <p class="mt-3 text-base text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.</p>
+                                </a>
+                                </div>
+                                <div class="mt-6 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <a href="#">
+                                    <span class="sr-only">Roel Aufderehar</span>
+                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
+                                    </a>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900">
+                                    <a href="#" class="hover:underline">Roel Aufderehar</a>
+                                    </p>
+                                    <div class="flex space-x-1 text-sm text-gray-500">
+                                    <time datetime="2020-03-16">Mar 16, 2020</time>
+                                    <span aria-hidden="true">·</span>
+                                    <span>6 min read</span>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    </div>
-                </div>
-                </div>
 
-                <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
-                <div class="flex-shrink-0">
-                    <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80" alt="">
-                </div>
-                <div class="flex flex-1 flex-col justify-between bg-white p-6">
-                    <div class="flex-1">
-                    <p class="text-sm font-medium text-indigo-600">
-                        <a href="#" class="hover:underline">Video</a>
-                    </p>
-                    <a href="#" class="mt-2 block">
-                        <p class="text-xl font-semibold text-gray-900">How to use search engine optimization to drive sales</p>
-                        <p class="mt-3 text-base text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
-                        facilis asperiores porro quaerat doloribus, eveniet dolore. Adipisci tempora aut inventore optio animi.,
-                        tempore temporibus quo laudantium.</p>
-                    </a>
-                    </div>
-                    <div class="mt-6 flex items-center">
-                    <div class="flex-shrink-0">
-                        <a href="#">
-                        <span class="sr-only">Brenna Goyette</span>
-                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
-                        </a>
-                    </div>
-                    <div class="ml-3">
-                        <p class="text-sm font-medium text-gray-900">
-                        <a href="#" class="hover:underline">Brenna Goyette</a>
-                        </p>
-                        <div class="flex space-x-1 text-sm text-gray-500">
-                        <time datetime="2020-03-10">Mar 10, 2020</time>
-                        <span aria-hidden="true">·</span>
-                        <span>4 min read</span>
+                    <div class="hidden w-full h-full rounded-lg lg:block" alt="...">
+                        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+                            <div class="flex-shrink-0">
+                                <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80" alt="">
+                            </div>
+                            <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                                <div class="flex-1">
+                                <p class="text-sm font-medium text-indigo-600">
+                                    <a href="#" class="hover:underline">Article</a>
+                                </p>
+                                <a href="#" class="mt-2 block">
+                                    <p class="text-xl font-semibold text-gray-900">Boost your conversion rate</p>
+                                    <p class="mt-3 text-base text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.</p>
+                                </a>
+                                </div>
+                                <div class="mt-6 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <a href="#">
+                                    <span class="sr-only">Roel Aufderehar</span>
+                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
+                                    </a>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900">
+                                    <a href="#" class="hover:underline">Roel Aufderehar</a>
+                                    </p>
+                                    <div class="flex space-x-1 text-sm text-gray-500">
+                                    <time datetime="2020-03-16">Mar 16, 2020</time>
+                                    <span aria-hidden="true">·</span>
+                                    <span>6 min read</span>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    </div>
-                </div>
-                </div>
 
-                <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
-                <div class="flex-shrink-0">
-                    <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80" alt="">
-                </div>
-                <div class="flex flex-1 flex-col justify-between bg-white p-6">
-                    <div class="flex-1">
-                    <p class="text-sm font-medium text-indigo-600">
-                        <a href="#" class="hover:underline">Case Study</a>
-                    </p>
-                    <a href="#" class="mt-2 block">
-                        <p class="text-xl font-semibold text-gray-900">Improve your customer experience</p>
-                        <p class="mt-3 text-base text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
-                        harum rerum voluptatem quo recusandae magni placeat saepe molestiae, sed excepturi cumque corporis
-                        perferendis hic.</p>
-                    </a>
-                    </div>
-                    <div class="mt-6 flex items-center">
-                    <div class="flex-shrink-0">
-                        <a href="#">
-                        <span class="sr-only">Daniela Metz</span>
-                        <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
-                        </a>
-                    </div>
-                    <div class="ml-3">
-                        <p class="text-sm font-medium text-gray-900">
-                        <a href="#" class="hover:underline">Daniela Metz</a>
-                        </p>
-                        <div class="flex space-x-1 text-sm text-gray-500">
-                        <time datetime="2020-02-12">Feb 12, 2020</time>
-                        <span aria-hidden="true">·</span>
-                        <span>11 min read</span>
+                    <div class="hidden w-full h-full rounded-lg lg:block" alt="...">
+                        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
+                            <div class="flex-shrink-0">
+                                <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80" alt="">
+                            </div>
+                            <div class="flex flex-1 flex-col justify-between bg-white p-6">
+                                <div class="flex-1">
+                                <p class="text-sm font-medium text-indigo-600">
+                                    <a href="#" class="hover:underline">Article</a>
+                                </p>
+                                <a href="#" class="mt-2 block">
+                                    <p class="text-xl font-semibold text-gray-900">Boost your conversion rate</p>
+                                    <p class="mt-3 text-base text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.</p>
+                                </a>
+                                </div>
+                                <div class="mt-6 flex items-center">
+                                <div class="flex-shrink-0">
+                                    <a href="#">
+                                    <span class="sr-only">Roel Aufderehar</span>
+                                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80" alt="">
+                                    </a>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900">
+                                    <a href="#" class="hover:underline">Roel Aufderehar</a>
+                                    </p>
+                                    <div class="flex space-x-1 text-sm text-gray-500">
+                                    <time datetime="2020-03-16">Mar 16, 2020</time>
+                                    <span aria-hidden="true">·</span>
+                                    <span>6 min read</span>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    </div>
-                </div>
-                </div>
 
+                </div>
+                
             </div>
 
-        <div class="w-1/12 flex items-center">
-            <div class="w-full">
-                <button class="p-3 rounded-full bg-orange-600 border ml-8">
-                    <svg class="w-4 h-4 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            <button type="button"
+                class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                data-carousel-prev="">
+                <span
+                    class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10  bg-orange-500  group-hover:bg-orange-600 group-focus:ring-2 group-focus:ring-orange-600/70 group-focus:outline-none">
+                    <svg class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                        </path>
                     </svg>
-                </button>
-            </div>
+                    <span class="hidden">Previous</span>
+                </span>
+            </button>
+            <button type="button"
+                class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                data-carousel-next="">
+                <span
+                    class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10  bg-orange-500  group-hover:bg-orange-600 group-focus:ring-2 group-focus:ring-orange-600/70 group-focus:outline-none">
+                    <svg class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                        </path>
+                    </svg>
+                    <span class="hidden">Next</span>
+                </span>
+            </button>
         </div>
-
     </div>
 
-    </div>
 </div>
+
+
 
 {{-- konten tentang sekolah --}}
 
-<div class="items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid xl:grid-cols-3 lg:gap-8 xl:gap-24 sm:py-16 lg:px-6">
+<div class="items-center py-5 px-4 mx-auto max-w-screen-xl lg:grid xl:grid-cols-3 lg:gap-8 xl:gap-24 sm:py-10 lg:px-6">
     <div class="mb-8 lg:mb-0">
         <p class="mb-4 text-3xl tracking-tight font-bold text-gray-900">Tentang Sekolah</p>
         <p class="mb-6 text-gray-500 sm:text-base">
@@ -333,7 +349,7 @@ Home
 
         <div class="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
 
-            <div class="flex flex-col overflow-hidden rounded-lg ring-1 ring-gray-500 hover:shadow-orange-500 hover:shadow-lg">
+            <div class="flex flex-col overflow-hidden rounded-lg ring-1 ring-gray-500 hover:shadow-orange-500 hover:shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out">
                 <div class="flex-shrink-0">
                     <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80" alt="">
                 </div>
@@ -372,7 +388,7 @@ Home
                 </div>
             </div>
 
-            <div class="flex flex-col overflow-hidden rounded-lg ring-1 ring-gray-500 hover:shadow-orange-500 hover:shadow-lg">
+            <div class="flex flex-col overflow-hidden rounded-lg ring-1 ring-gray-500 hover:shadow-orange-500 hover:shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out">
                 <div class="flex-shrink-0">
                     <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80" alt="">
                 </div>
@@ -412,7 +428,7 @@ Home
                 </div>
             </div>
 
-            <div class="flex flex-col overflow-hidden rounded-lg ring-1 ring-gray-500 hover:shadow-orange-500 hover:shadow-lg">
+            <div class="flex flex-col overflow-hidden rounded-lg ring-1 ring-gray-500 hover:shadow-orange-500 hover:shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out">
                 <div class="flex-shrink-0">
                     <img class="h-48 w-full object-cover" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80" alt="">
                 </div>
@@ -521,7 +537,7 @@ Home
                 class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
                 data-carousel-prev="">
                 <span
-                    class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 dark:bg-white/30 bg-gray-800/30 dark:group-hover:bg-white/50 group-hover:bg-gray-800/60 group-focus:ring-4 dark:group-focus:ring-white group-focus:ring-gray-800/70 group-focus:outline-none">
+                    class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10  bg-orange-500  group-hover:bg-orange-600 group-focus:ring-2 group-focus:ring-orange-600/70 group-focus:outline-none">
                     <svg class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
@@ -534,7 +550,7 @@ Home
                 class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
                 data-carousel-next="">
                 <span
-                    class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 dark:bg-white/30 bg-gray-800/30 dark:group-hover:bg-white/50 group-hover:bg-gray-800/60 group-focus:ring-4 dark:group-focus:ring-white group-focus:ring-gray-800/70 group-focus:outline-none">
+                    class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10  bg-orange-500  group-hover:bg-orange-600 group-focus:ring-2 group-focus:ring-orange-600/70 group-focus:outline-none">
                     <svg class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor"
                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
@@ -573,7 +589,7 @@ Home
 
 {{-- Hubungi Kami --}}
 
-<div class="bg-[url('../../public/img/homeImage2.png')] bg-no-repeat bg-cover bg-center bg-blend-multiply ">
+<div class="bg-[url('../../public/img/homeImage2.png')] bg-no-repeat bg-cover bg-center bg-blend-multiply">
     <div class="px-4 lg:pt-24 pt-8 pb-72 lg:pb-80 mx-auto max-w-screen-sm text-center lg:px-6 ">
         <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-white">Contact Us</h2>
         <p class="mb-16 font-light text-gray-400 sm:text-xl">We use an agile approach to test assumptions and connect with the needs of your audience early and often.</p>

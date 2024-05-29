@@ -45,8 +45,8 @@ class ProfileSekolahController extends Controller
 
 
 
-    public function indexakreditasi()
-    {
+    public function indexakreditasi(){
+
         $akreditasi = Akreditasi::all();
         return response()->json($akreditasi);
     }
