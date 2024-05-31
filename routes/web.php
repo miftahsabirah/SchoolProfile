@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // return view('home');
-    return view('organisasi/strukturTugas');
+    return view('organisasi/dewanSekolah');
 });
