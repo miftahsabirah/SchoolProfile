@@ -18,6 +18,6 @@ class Jabatan extends Model
 
     public function gurukaryawan(): HasOne
     {
-        return $this->hasOne(GuruKaryawan::class );
+        return $this->hasOne(GuruKaryawan::class, 'jabatan_id', 'id');
     }
 }
