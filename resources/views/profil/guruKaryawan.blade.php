@@ -14,6 +14,7 @@ Guru Karyawan
 <div class="flex text-sm font-medium text-center text-gray-500 border-b border-gray-200 justify-center m-4">
     <ul class="flex flex-wrap -mb-px">
         <li class="me-2">
+
             <a href="#" data-filter="" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Semua</a>
         </li>
         <li class="me-2">
@@ -86,3 +87,4 @@ Guru Karyawan
 
 
 @endsection
+
