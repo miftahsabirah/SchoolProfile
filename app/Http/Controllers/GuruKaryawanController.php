@@ -8,15 +8,37 @@ use App\Http\Resources\JabatanResource;
 use App\Models\GuruKaryawan;
 use App\Models\Jabatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Js;
 
 class GuruKaryawanController extends Controller
 {
     // BAGIAN GURU
-    public function indexGuru(){
-        $guru = GuruKaryawan::all();
-        return GuruKaryawanResource::collection(($guru));
+    public function indexGuru(Request $request)
+    {
+        $filter = $request->query('filter');
+    
+        $query = GuruKaryawan::with('jabatan');
+    
+        if ($filter) {
+            if ($filter == 'guru') {
+                $query->whereHas('jabatan', function ($q) {
+                    $q->where('nama_jabatan', 'guru');
+                });
+            } else if ($filter == 'Kepala Sekolah') {
+                $query->whereHas('jabatan', function ($q) {
+                    $q->where('nama_jabatan', 'Kepala Sekolah');
+                });
+            } else {
+                // For other cases, directly use the filter value
+                $query->whereHas('jabatan', function ($q) use ($filter) {
+                    $q->where('nama_jabatan', $filter);
+                });
+            }
+        }
+    
+        $guru = $query->get();
+        return response()->json($guru);
     }
-
     public function postguru(Request $request){
         $this->validate($request, [
             'jabatan_id'=> 'required',

@@ -29,10 +29,12 @@ Route::post('login', [LoginController::class, 'login']);
 
 Route::get('profile', [ProfileSekolahController::class, 'indexprofileschool']);
 
+Route::put('updateprofile1/{id}', [ProfileSekolahController::class, 'updateprofile1']);
+
 
 
 // Route gurukaryawan
-Route::get('getguru', [GuruKaryawanController::class, 'indexGuru'])->middleware(['auth:sanctum']);
+Route::get('getguru', [GuruKaryawanController::class, 'indexGuru'])->name('getguru');
 Route::post('postguru', [GuruKaryawanController::class, 'postguru']);
 Route::put('updateguru/{id}', [GuruKaryawanController::class, 'updateguru']);
 Route::delete('deleteguru/{id}', [GuruKaryawanController::class, 'deleteguru']);
