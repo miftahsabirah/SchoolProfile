@@ -14,17 +14,16 @@ Guru Karyawan
 <div class="flex text-sm font-medium text-center text-gray-500 border-b border-gray-200 justify-center m-4">
     <ul class="flex flex-wrap -mb-px">
         <li class="me-2">
-
-            <a href="#" data-filter="" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Semua</a>
+            <a href="#" data-filter="" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 filter-link">Semua</a>
         </li>
         <li class="me-2">
-            <a href="#" data-filter="guru"  class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Guru</a>
+            <a href="#" data-filter="guru" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 filter-link">Guru</a>
         </li>
         <li class="me-2">
-            <a href="#" data-filter="Kepala Sekolah" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Kepala Sekolah</a>
+            <a href="#" data-filter="Kepala Sekolah" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 filter-link">Kepala Sekolah</a>
         </li>
         <li class="me-2">
-            <a href="#" data-filter="karyawan" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Staf</a>
+            <a href="#" data-filter="karyawan" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 filter-link">Staf</a>
         </li>
     </ul>
 </div>
@@ -43,19 +42,20 @@ Guru Karyawan
         $.ajax({
             url: "{!! route('getguru') !!}",
             type: "GET",
-            data: { filter: filter },
             dataType: "json",
             success: function (response) {
                 if (Array.isArray(response)) {
                     var html = '';
                     response.forEach(function(item) {
-                        html += '<div class="relative">';
-                        html += '<img class="h-auto w-full" src="img/guru.png" alt="office feature image">';
-                        html += '<div class="absolute bottom-0 left-0 right-0 text-center text-white px-4 py-2 bg-blue-950 bg-opacity-75">';
-                        html += '<p class="font-bold text-2xl">' + item.nama_guru + '</p>';
-                        html += '<p class="text-xl font-normal">' + item.jabatan.nama_jabatan + '</p>';
-                        html += '</div>';
-                        html += '</div>';
+                        if (!filter || item.jabatan.nama_jabatan.toLowerCase() === filter.toLowerCase()) {
+                            html += '<div class="relative">';
+                            html += '<img class="h-auto w-full" src="img/guru.png" alt="office feature image">';
+                            html += '<div class="absolute bottom-0 left-0 right-0 text-center text-white px-4 py-2 bg-blue-950 bg-opacity-75">';
+                            html += '<p class="font-bold text-2xl">' + item.nama_guru + '</p>';
+                            html += '<p class="text-xl font-normal">' + item.jabatan.nama_jabatan + '</p>';
+                            html += '</div>';
+                            html += '</div>';
+                        }
                     });
                     $('#cf-data-container').html(html);
                 } else {
@@ -73,13 +73,15 @@ Guru Karyawan
         fetchData();
 
         // Set up click event handlers for the filter links
-        $('.flex ul li a').click(function(e) {
+        $('.filter-link').click(function(e) {
+
             e.preventDefault();
             var filter = $(this).data('filter');
             fetchData(filter);
 
             // Update active state
-            $('.flex ul li a').removeClass('text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500');
+            $('.filter-link').removeClass('text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500');
+
             $(this).addClass('text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500');
         });
     });
