@@ -13,30 +13,9 @@ use Illuminate\Support\Js;
 class GuruKaryawanController extends Controller
 {
     // BAGIAN GURU
-    public function indexGuru(Request $request)
+    public function indexGuru()
     {
-        $filter = $request->query('filter');
-    
-        $query = GuruKaryawan::with('jabatan');
-    
-        if ($filter) {
-            if ($filter == 'guru') {
-                $query->whereHas('jabatan', function ($q) {
-                    $q->where('nama_jabatan', 'guru');
-                });
-            } else if ($filter == 'Kepala Sekolah') {
-                $query->whereHas('jabatan', function ($q) {
-                    $q->where('nama_jabatan', 'Kepala Sekolah');
-                });
-            } else {
-                // For other cases, directly use the filter value
-                $query->whereHas('jabatan', function ($q) use ($filter) {
-                    $q->where('nama_jabatan', $filter);
-                });
-            }
-        }
-    
-        $guru = $query->get();
+        $guru = GuruKaryawan::with('jabatan')->get();
         return response()->json($guru);
     }
     public function postguru(Request $request){
