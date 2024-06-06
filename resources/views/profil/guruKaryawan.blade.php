@@ -74,12 +74,14 @@ Guru Karyawan
 
         // Set up click event handlers for the filter links
         $('.filter-link').click(function(e) {
+
             e.preventDefault();
             var filter = $(this).data('filter');
             fetchData(filter);
 
             // Update active state
             $('.filter-link').removeClass('text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500');
+
             $(this).addClass('text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500');
         });
     });

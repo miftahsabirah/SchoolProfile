@@ -16,6 +16,7 @@ class GuruKaryawanController extends Controller
     public function indexGuru()
     {
         $guru = GuruKaryawan::with('jabatan')->get();
+
         return response()->json($guru);
     }
     public function postguru(Request $request){
