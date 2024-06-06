@@ -9,6 +9,21 @@ use Illuminate\Http\Request;
 
 class ProfileSekolahController extends Controller
 {
+    public function indekprofielview(){
+        return view('profil.sambutan');
+    }
+    public function indekprofielviewsejarah(){
+        return view('profil.sejarah');
+    }
+    public function indekprofielviewvisimisi(){
+        return view('profil.visiMisi');
+    }
+    public function indekprofielviewakreditasi(){
+        return view('profil.listAkreditasi');
+    }
+    public function indekprofielviewguru(){
+        return view('profil.guruKaryawan');
+    }
     public function indexprofileschool()
     {
         $profile = ProfileSekolah::all();
@@ -20,7 +35,17 @@ class ProfileSekolahController extends Controller
         $updateprofile1 = ProfileSekolah::find($id);
         if ($updateprofile1) {
             $validatedata = $request->validate([
-                'sambuatan_kepsek' => 'required',
+                'nama_sekolah'=> 'required',
+                'alamat'=> 'required',
+                'nomor_telepon'=> 'required',
+                'email'=> 'required',
+                'kode_pos'=> 'required',
+                'deskripsi_sejarah'=> 'required',
+                'visi_misi'=> 'required',
+                'motto'=> 'required',
+                'sambuatan_kepsek'=> 'required',
+                'tujuan_sekolah'=> 'required',
+                'logo_sekolah'=> 'required',
                 
             ]);
             $updateprofile1->sambuatan_kepsek = $validatedata['sambuatan_kepsek'];

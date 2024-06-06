@@ -49,7 +49,7 @@ Guru Karyawan
                     response.forEach(function(item) {
                         if (!filter || item.jabatan.nama_jabatan.toLowerCase() === filter.toLowerCase()) {
                             html += '<div class="relative">';
-                            html += '<img class="h-auto w-full" src="img/guru.png" alt="office feature image">';
+                            html += '<img class="h-auto w-full" src="{{ asset('img/guru.png') }}" alt="office feature image">';
                             html += '<div class="absolute bottom-0 left-0 right-0 text-center text-white px-4 py-2 bg-blue-950 bg-opacity-75">';
                             html += '<p class="font-bold text-2xl">' + item.nama_guru + '</p>';
                             html += '<p class="text-xl font-normal">' + item.jabatan.nama_jabatan + '</p>';

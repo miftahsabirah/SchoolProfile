@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('indexxx', [LoginController::class, 'index']);
 Route::post('login', [LoginController::class, 'login']);
 
-Route::get('profile', [ProfileSekolahController::class, 'indexprofileschool']);
+Route::get('profile', [ProfileSekolahController::class, 'indexprofileschool'])->name('profile');
 
 Route::put('updateprofile1/{id}', [ProfileSekolahController::class, 'updateprofile1']);
 
