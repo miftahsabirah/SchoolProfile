@@ -31,7 +31,6 @@ route::get('/profile/visimisi', [ProfileSekolahController::class,'indekprofielvi
 route::get('/profile/akreditasi', [ProfileSekolahController::class,'indekprofielviewakreditasi'])->name('profile.akreditasi');
 route::get('/profile/guru', [ProfileSekolahController::class,'indekprofielviewguru'])->name('profile.guru');
 
-
 Route::get('home', [HomeController::class, 'indexhome'])->name('home');
 
 Route::get('/akademik/kurikulum', [KurikulumController::class, 'indexviewkurikulum'])->name('akademik.kurikulum');
