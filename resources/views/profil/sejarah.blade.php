@@ -85,32 +85,51 @@
                     Profil Sekolah
                 </h2>
 
-                <p class="font-light lg:text-2xl">
-                    Nama Sekolah : SD N CIREN
+                <p class="font-light lg:text-2xl" id="nama_sekolah">
                 </p>
 
                 <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
 
-                <p class="font-light lg:text-2xl">
-                    Nomor Statistik Sekolah (NSS) : 101040106017
+                <p class="font-light lg:text-2xl" id=npsn>
                 </p>
 
                 <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
 
-                <p class="font-light lg:text-2xl">
-                    Nomor Pokok Sekolah Nasional  (NPSN) : 20400701
+                <p class="font-light lg:text-2xl" id=status>
                 </p>
 
                 <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
 
-                <p class="font-light lg:text-2xl">
-                    Status : Negeri
+                <p class="font-light lg:text-2xl" id=bentuk_pendidikan>
                 </p>
 
                 <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
 
-                <p class="font-light lg:text-2xl">
-                    Status Dalam Gugus : Sekolah Imbas
+                <p class="font-light lg:text-2xl" id=status_kepemilikan>
+                </p>
+
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+
+                <p class="font-light lg:text-2xl" id=sk_pendirian_sekolah>
+                </p>
+
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+
+                <p class="font-light lg:text-2xl" id=tgl_sk_pendirian>
+                </p>
+
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+
+                <p class="font-light lg:text-2xl" id=sk_izin_operasional>
+                </p>
+
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+
+                <p class="font-light lg:text-2xl" id=tgl_sk_izin_operasional>
                 </p>
 
                 <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
@@ -140,8 +159,40 @@
                         html +=
                             '<p class="mx-auto mt-5 max-w-6xl text-justify text-2xl text-gray-900 sm:mt-10">' +
                             item.deskripsi_sejarah + '</p>';
+
+                        $('#nama_sekolah').text('Nama Sekolah : ' + item.nama_sekolah);
                     });
                     $('#sejarah').html(html);
+                } else {
+                    console.log("Invalid data format. Expected an array.");
+                }
+            },
+            error: function(xhr, status, error) {
+                // Handle errors, if any
+                console.log(error);
+            }
+        });
+        $.ajax({
+            url: "{!! route('getakreditasi') !!}",
+            type: "GET",
+            dataType: "json",
+            success: function(response) {
+                if (Array.isArray(response)) {
+                    var html = '';
+                    response.forEach(function(item) {
+                        $('#npsn').text('Nomor Pokok Sekolah Nasional (NPSN) : ' + item.npsn);
+                        $('#status').text('Status : ' + item.status);
+                        $('#bentuk_pendidikan').text('Bentuk Pendidikan : ' + item.bentuk_pendidikan);
+                        $('#status_kepemilikan').text('Status Kepemilikan : ' + item
+                        .status_kepemilikan);
+                        $('#sk_pendirian_sekolah').text('SK Pendirian Sekolah : ' + item
+                            .sk_pendirian_sekolah);
+                        $('#tgl_sk_pendirian').text('Tanggal SK Pendirian : ' + item.tanggal_sk_pendirian);
+                        $('#sk_izin_operasional').text('SK Izin Operasional : ' + item
+                            .sk_izin_operasional);
+                        $('#tgl_sk_izin_operasional').text('Tanggal SK Izin Operasional : ' + item
+                            .tanggal_sk_izin_operasional);
+                    });
                 } else {
                     console.log("Invalid data format. Expected an array.");
                 }

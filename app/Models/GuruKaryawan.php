@@ -18,6 +18,7 @@ class GuruKaryawan extends Model
         'nip',
         'nomor_telepon',
         'jenis_guru',
+        'foto',
     ];
 
     public function jabatan(): BelongsTo

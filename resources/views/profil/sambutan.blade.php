@@ -7,7 +7,7 @@
 @section('content')
     <div class="py-16 px-4 mx-auto max-w-screen-xl">
         <div class="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-start mb-4 lg:mb-0">
-            <div class="relative " id="namekepalasekolah">
+            <div class="relative " id="namakepalasekolah">
             </div>
 
             <div class="ml-0 lg:ml-20 mt-40 lg:mt-0">
@@ -57,19 +57,18 @@
                     var html = '';
                     var kepalasekolah = null;
                     response.forEach(function(item) {
-                        if (item.jabatan.nama_jabatan === 'kepala sekolah') {
+                        if (item.jabatan.nama_jabatan === 'Kepala sekolah') {
                             kepalasekolah = item;
                         }
                     });
                     if (kepalasekolah) {
-                        html +=
-                            '<img class="h-auto max-w-40 lg:w-auto" src="{{ asset('img/guru.png') }}" alt="office feature image 2">';
-                        
-                        html +=
-                            '<div class="absolute bottom--2 left-0 right-0 text-center text-white px-4 py-2 bg-blue-950 ">';
-                        html += '<p class="font-bold text-2xl">' + kepalasekolah.nama_guru + '</p>';
-                        html += '<p class="text-xl font-normal">' + kepalasekolah.jabatan.nama_jabatan + '</p>';
-                        $('#namekepalasekolah').html(html);
+                    var imgUrl = "{{ asset('storage/post_guru_karyawan') }}/" + kepalasekolah.foto;
+                    html += '<img class="h-auto max-w-40 lg:w-auto" src="' + imgUrl + '" alt="' + kepalasekolah.nama_guru + '">';
+                    html += '<div class="absolute bottom--2 left-0 right-0 text-center text-white px-4 py-2 bg-blue-950">';
+                    html += '<p class="font-bold text-2xl">' + kepalasekolah.nama_guru + '</p>';
+                    html += '<p class="text-xl font-normal">' + kepalasekolah.jabatan.nama_jabatan + '</p>';
+                    html += '</div>';
+                    $('#namakepalasekolah').html(html);
                     } else {
                         console.log("Data Kepala Sekolah tidak ditemukan.");
                     }
