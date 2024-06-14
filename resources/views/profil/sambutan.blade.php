@@ -3,8 +3,11 @@
 @section('title')
     Detail Akreditasi
 @endsection
-
+@section('page_title')
+    Sambutan
+@endsection
 @section('content')
+@include('header')
     <div class="py-16 px-4 mx-auto max-w-screen-xl">
         <div class="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-start mb-4 lg:mb-0">
             <div class="relative " id="namakepalasekolah">

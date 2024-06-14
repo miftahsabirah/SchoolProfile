@@ -37,4 +37,28 @@ class LoginController extends Controller
 
         return $user->createToken('user login')->plainTextToken;
     }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+            'role' => 'required',
+        ]);
+
+        // Buat pengguna baru
+        $user = User::create($request->all());
+
+        if ($user) {
+            return response()->json([
+                'Message: ' => 'Succes!',
+                'user created: ' => $user
+            ], 200);
+        } else {
+            return response([
+                'Message: ' => 'We could not create a new user.',
+            ], 500);
+        }
+    }
 }

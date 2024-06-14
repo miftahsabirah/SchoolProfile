@@ -13,6 +13,16 @@ class AkreditasiController extends Controller
         $akreditasi = Akreditasi::all();
         return response()->json($akreditasi);
     }
+    public function indexdetailakreditasi($id){
+        $detailakreditasi = Akreditasi::find($id);
+
+        if($detailakreditasi){
+            return response()->json($detailakreditasi);
+
+        }else{
+            return response()->json(null);
+        }
+    }
 
     public function postakreditasi(Request $request){
         $this->validate($request, [

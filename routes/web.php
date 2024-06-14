@@ -42,3 +42,5 @@ Route::get('/organisasi/bagan', [ViewController::class, 'indexviewstrukturbagan'
 Route::get('/organisasi/tugas', [ViewController::class, 'indexviewstrukturtugas'])->name('organisasi.tugas');
 Route::get('/informasi/berita', [ViewController::class, 'indexviewberita'])->name('informasi.berita');
 Route::get('/sarpras', [ViewController::class, 'indexviewsarpras'])->name('sarpras');
+Route::get('/profil/detailAkreditasi/{id}', [ViewController::class, 'indexviewdetailakreditasi'])->name('profil.detailAkreditasi');
+
