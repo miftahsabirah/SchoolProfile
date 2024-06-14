@@ -97,6 +97,7 @@ Route::delete('deleteakademik/{id}', [AkademikController::class, 'deleteakademik
 //Route Akreditasi
 Route::get('getakreditasi', [AkreditasiController::class, 'indexakreditasi'])->name('getakreditasi');
 Route::get('getdetailakreditasi/{id}', [AkreditasiController::class, 'indexdetailakreditasi'])->name('getdetailakreditasi');
+
 Route::post('postakreditasi', [AkreditasiController::class, 'postakreditasi']);
 Route::put('updateakreditasi/{id}', [AkreditasiController::class, 'updateakreditasi']);
 Route::delete('deleteakreditasi/{id)', [AkreditasiController::class, 'deleteakreditasi']);

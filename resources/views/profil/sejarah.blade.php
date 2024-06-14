@@ -109,6 +109,27 @@
                 </p>
 
                 <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+
+                <p class="font-light lg:text-2xl" id=sk_pendirian_sekolah>
+                </p>
+
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+
+                <p class="font-light lg:text-2xl" id=tgl_sk_pendirian>
+                </p>
+
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+
+                <p class="font-light lg:text-2xl" id=sk_izin_operasional>
+                </p>
+
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+
+                <p class="font-light lg:text-2xl" id=tgl_sk_izin_operasional>
 
 
             </div>
@@ -159,6 +180,7 @@
                         $('#bentuk_pendidikan').text('Bentuk Pendidikan : ' + item.bentuk_pendidikan);
                         $('#status_kepemilikan').text('Status Kepemilikan : ' + item
                             .status_kepemilikan);
+
                     });
                 } else {
                     console.log("Invalid data format. Expected an array.");
