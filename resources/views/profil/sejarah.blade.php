@@ -109,6 +109,10 @@
                 </p>
 
                 <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+
+                <p class="font-light lg:text-2xl" id=sk_izin_operasional>
+                </p>
 
 
             </div>

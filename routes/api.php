@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('indexxx', [LoginController::class, 'index']);
 Route::post('login', [LoginController::class, 'login']);
 Route::post('createuser', [LoginController::class],'store');
+Route::post('createuser', [LoginController::class],'store');
 
 Route::get('profile', [ProfileSekolahController::class, 'indexprofileschool'])->name('profile');
 
@@ -77,6 +78,7 @@ Route::put('updategaleri/{id}', [ImageController::class, 'updategaleri']);
 Route::delete('deletegaleri/{id}', [ImageController::class, 'deletegaleri']);
 
 // Route sarpras
+Route::get('getsarpras', [ImageController::class, 'indexsarpras'])->name('getsarpras');
 Route::get('getsarpras', [ImageController::class, 'indexsarpras'])->name('getsarpras');
 Route::post('postsarpras', [ImageController::class, 'postsarpras']);
 Route::put('updatesarpras/{id}', [ImageController::class, 'updatesarpras']);
