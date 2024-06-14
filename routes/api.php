@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('indexxx', [LoginController::class, 'index']);
 Route::post('login', [LoginController::class, 'login']);
 Route::post('createuser', [LoginController::class],'store');
+Route::post('createuser', [LoginController::class],'store');
 
 Route::get('profile', [ProfileSekolahController::class, 'indexprofileschool'])->name('profile');
 
@@ -78,6 +79,7 @@ Route::delete('deletegaleri/{id}', [ImageController::class, 'deletegaleri']);
 
 // Route sarpras
 Route::get('getsarpras', [ImageController::class, 'indexsarpras'])->name('getsarpras');
+Route::get('getsarpras', [ImageController::class, 'indexsarpras'])->name('getsarpras');
 Route::post('postsarpras', [ImageController::class, 'postsarpras']);
 Route::put('updatesarpras/{id}', [ImageController::class, 'updatesarpras']);
 Route::delete('deletesarpras/{id}', [ImageController::class, 'deletesarpras']);
@@ -97,7 +99,6 @@ Route::delete('deleteakademik/{id}', [AkademikController::class, 'deleteakademik
 //Route Akreditasi
 Route::get('getakreditasi', [AkreditasiController::class, 'indexakreditasi'])->name('getakreditasi');
 Route::get('getdetailakreditasi/{id}', [AkreditasiController::class, 'indexdetailakreditasi'])->name('getdetailakreditasi');
-
 Route::post('postakreditasi', [AkreditasiController::class, 'postakreditasi']);
 Route::put('updateakreditasi/{id}', [AkreditasiController::class, 'updateakreditasi']);
 Route::delete('deleteakreditasi/{id)', [AkreditasiController::class, 'deleteakreditasi']);
