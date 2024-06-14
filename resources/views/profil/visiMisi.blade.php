@@ -4,8 +4,11 @@
 Visi Misi
 @endsection
 
+@section('page_title')
+    Visi Misi
+@endsection
 @section('content')
-
+@include('header')
 <div class="py-8 px-4 mx-auto max-w-screen-xl lg:px-12 sm:text-center lg:py-12">
     <p class="mb-4 text-3xl tracking-tight font-bold text-gray-900">
         VISI SEKOLAH

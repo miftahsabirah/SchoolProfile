@@ -109,32 +109,6 @@
                 </p>
 
                 <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
-                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
-
-                <p class="font-light lg:text-2xl" id=sk_pendirian_sekolah>
-                </p>
-
-                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
-                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
-
-                <p class="font-light lg:text-2xl" id=tgl_sk_pendirian>
-                </p>
-
-                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
-                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
-
-                <p class="font-light lg:text-2xl" id=sk_izin_operasional>
-                </p>
-
-                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
-                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
-
-                <p class="font-light lg:text-2xl" id=tgl_sk_izin_operasional>
-                </p>
-
-                <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
-
-
 
 
             </div>
@@ -184,14 +158,7 @@
                         $('#status').text('Status : ' + item.status);
                         $('#bentuk_pendidikan').text('Bentuk Pendidikan : ' + item.bentuk_pendidikan);
                         $('#status_kepemilikan').text('Status Kepemilikan : ' + item
-                        .status_kepemilikan);
-                        $('#sk_pendirian_sekolah').text('SK Pendirian Sekolah : ' + item
-                            .sk_pendirian_sekolah);
-                        $('#tgl_sk_pendirian').text('Tanggal SK Pendirian : ' + item.tanggal_sk_pendirian);
-                        $('#sk_izin_operasional').text('SK Izin Operasional : ' + item
-                            .sk_izin_operasional);
-                        $('#tgl_sk_izin_operasional').text('Tanggal SK Izin Operasional : ' + item
-                            .tanggal_sk_izin_operasional);
+                            .status_kepemilikan);
                     });
                 } else {
                     console.log("Invalid data format. Expected an array.");

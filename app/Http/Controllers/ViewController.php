@@ -25,4 +25,8 @@ class ViewController extends Controller
     public function indexviewgaleri(){
         return view('');
     }
+
+    public function indexviewdetailakreditasi(){
+        return view('profil.detailAkreditasi');
+    }
 }
