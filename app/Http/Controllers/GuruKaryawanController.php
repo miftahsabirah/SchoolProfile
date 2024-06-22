@@ -110,7 +110,7 @@ class GuruKaryawanController extends Controller
     public function indexjabatan()
     {
         $jabatan = Jabatan::all();
-        return JabatanResource::collection(($jabatan));
+        return response()->json($jabatan);
     }
 
     public function postjabatan(Request $request)

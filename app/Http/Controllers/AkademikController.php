@@ -15,7 +15,7 @@ class AkademikController extends Controller
     }
     public function indexakademik(){
         $akademiks = Akademik::with('kurikulum')->get();
-        return AkademikResource::collection($akademiks);
+        return response()->json($akademiks);
     }
 
     public function postakademik(Request $request){
