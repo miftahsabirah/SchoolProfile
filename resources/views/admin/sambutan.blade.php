@@ -6,7 +6,7 @@ Sambutan
 
 
 @section('content')
-
+{{-- test --}}
 <div class="bg-gray-100 flex justify-center h-screen">
     <div class="w-full max-w-4xl shadow-xl rounded-lg">
         <h2 class="text-sm font-medium px-6 py-3">Setting Sambutan</h2>

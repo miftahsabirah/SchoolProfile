@@ -3,6 +3,7 @@
 @section('title')
 Dewan Sekolah
 @endsection
+{{-- test --}}
 
 @section('content')
 <div class="bg-gray-100 flex justify-center h-auto">

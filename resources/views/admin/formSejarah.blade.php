@@ -3,7 +3,7 @@
 @section('title')
 Form Sejarah
 @endsection
-
+{{-- test --}}
 @section('content')
 
 <div class="flex items-center justify-center">

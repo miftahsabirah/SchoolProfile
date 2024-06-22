@@ -3,6 +3,7 @@
 @section('title')
 Landing Page
 @endsection
+{{-- test --}}
 
 @section('content')
 
