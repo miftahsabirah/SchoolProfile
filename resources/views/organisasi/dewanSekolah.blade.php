@@ -12,12 +12,12 @@ Home
 <div class="lg:py-16 py-8">
     <div class="px-4 mx-auto mb-2 max-w-screen-md text-center md:mb-3 lg:px-0">
         <p class="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 md:text-4xl">
-            Prestasi Mahasiswa
+            kkkkkkkkkkkkkk
         </p>
 
         <div>
             <p class="mx-auto mt-3 mb-10 max-w-2xl text-xl text-gray-500 sm:mt-4">
-                Informasi prestasi siswa dapat dilihat dibawah ini
+                kkkkkkkkkkkkkkkkkkk
             </p>
         </div>
     </div>
