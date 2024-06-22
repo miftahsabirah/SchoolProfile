@@ -8,6 +8,10 @@
     Kalender Akademik
 @endsection
 
+@section('page_title')
+    Kalender Akademik
+@endsection
+
 @section('content')
     @include('header')
 
