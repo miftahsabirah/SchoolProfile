@@ -44,3 +44,10 @@ Route::get('/informasi/berita', [ViewController::class, 'indexviewberita'])->nam
 Route::get('/sarpras', [ViewController::class, 'indexviewsarpras'])->name('sarpras');
 Route::get('/profil/detailAkreditasi/{id}', [ViewController::class, 'indexviewdetailakreditasi'])->name('profil.detailAkreditasi');
 
+Route::get('/galeri', function () {
+    return view('galeri/galeri');
+})->name('galeri');
+
+Route::get('/berita', function () {
+    return view('informasi/berita');
+})->name('berita');

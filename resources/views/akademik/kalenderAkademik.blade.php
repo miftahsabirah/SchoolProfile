@@ -4,7 +4,12 @@
 Kalender Akademik
 @endsection
 
+@section('page_title')
+    Kalender Akademik
+@endsection
+
 @section('content')
+    @include('header')
 
 <div class="py-8 px-4 mx-auto space-y-12 max-w-screen-xl lg:space-y-20 sm:py-16 lg:px-6">
     

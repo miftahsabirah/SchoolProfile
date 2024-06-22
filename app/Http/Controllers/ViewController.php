@@ -29,3 +29,4 @@ class ViewController extends Controller
     public function indexviewdetailakreditasi(){
         return view('profil.detailAkreditasi');
     }
+}
