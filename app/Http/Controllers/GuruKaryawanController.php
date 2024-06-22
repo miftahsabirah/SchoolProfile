@@ -13,61 +13,59 @@ use Illuminate\Support\Js;
 class GuruKaryawanController extends Controller
 {
     // BAGIAN GURU
-    public function indexGuru(Request $request)
+    public function indexGuru()
     {
-        $filter = $request->query('filter');
-    
-        $query = GuruKaryawan::with('jabatan');
-    
-        if ($filter) {
-            if ($filter == 'guru') {
-                $query->whereHas('jabatan', function ($q) {
-                    $q->where('nama_jabatan', 'guru');
-                });
-            } else if ($filter == 'Kepala Sekolah') {
-                $query->whereHas('jabatan', function ($q) {
-                    $q->where('nama_jabatan', 'Kepala Sekolah');
-                });
-            } else {
-                // For other cases, directly use the filter value
-                $query->whereHas('jabatan', function ($q) use ($filter) {
-                    $q->where('nama_jabatan', $filter);
-                });
-            }
-        }
-    
-        $guru = $query->get();
+        $guru = GuruKaryawan::with('jabatan')->get();
+
         return response()->json($guru);
     }
-    public function postguru(Request $request){
+    public function postguru(Request $request)
+    {
         $this->validate($request, [
-            'jabatan_id'=> 'required',
-            'nama_guru'=> 'required',
-            'nip'=> 'required',
-            'nomor_telepon'=> 'required',
-            'jenis_guru'=> 'required',
+            'jabatan_id' => 'required',
+            'nama_guru' => 'required',
+            'nip' => 'required',
+            'nomor_telepon' => 'required',
+            'jenis_guru' => 'required',
+            'foto' => 'required|image|mimetypes:image/jpeg,image/jpg,image/png|max:2048',
         ]);
+
         $gurukaryawanpost = GuruKaryawan::create($request->all());
+
+        if ($request->hasFile('foto')) {
+            $filename = $request->file('foto')->getClientOriginalName();
+            $getfilenamewitoutext = pathinfo($filename, PATHINFO_FILENAME);
+            $getfileExtension = $request->file('foto')->getClientOriginalExtension();
+            $createnewFileName = time() . '_' . str_replace(' ', '_', $getfilenamewitoutext) . '.' . $getfileExtension;
+            $img_path = $request->file('foto')->storeAs('public/post_guru_karyawan', $createnewFileName);
+
+            // Update the gurukaryawanpost object with the new filename
+            $gurukaryawanpost->foto = $createnewFileName;
+            $gurukaryawanpost->save(); // Save the updated object
+        }
+
         if ($gurukaryawanpost) {
             return response()->json([
-                'Message: ' => 'Succes!',
-                'gurukaryawan created: ' => $gurukaryawanpost
+                'message' => 'Success!',
+                'gurukaryawan' => $gurukaryawanpost
             ], 200);
         } else {
-            return response([
-                'Message: ' => 'We could not create a new gurukaryawan.',
+            return response()->json([
+                'message' => 'We could not create a new gurukaryawan.',
             ], 500);
         }
     }
-    public function updateguru(Request $request, string $id){
+
+    public function updateguru(Request $request, string $id)
+    {
         $gurukaryawanupdate = GuruKaryawan::find($id);
         if ($gurukaryawanupdate) {
             $validatedata = $request->validate([
-                'jabatan_id'=> 'required',
-                'nama_guru'=> 'required',
-                'nip'=> 'required',
-                'nomor_telepon'=> 'required',
-                'jenis_guru'=> 'required',
+                'jabatan_id' => 'required',
+                'nama_guru' => 'required',
+                'nip' => 'required',
+                'nomor_telepon' => 'required',
+                'jenis_guru' => 'required',
             ]);
             $gurukaryawanupdate->jabatan_id = $validatedata['jabatan_id'];
             $gurukaryawanupdate->nama_guru = $validatedata['nama_guru'];
@@ -89,9 +87,9 @@ class GuruKaryawanController extends Controller
                 'Message: ' => 'We could not find the gurukaryawan.',
             ], 500);
         }
-
     }
-    public function deleteguru(string $id){
+    public function deleteguru(string $id)
+    {
         $gurukaryawandelete = GuruKaryawan::find($id);
         if ($gurukaryawandelete) {
             $gurukaryawandelete->delete();
@@ -109,7 +107,8 @@ class GuruKaryawanController extends Controller
 
 
     // BAGIAN JABATAN GURU
-    public function indexjabatan(){
+    public function indexjabatan()
+    {
         $jabatan = Jabatan::all();
         return JabatanResource::collection(($jabatan));
     }
@@ -133,7 +132,8 @@ class GuruKaryawanController extends Controller
         }
     }
 
-    public function upadatejabatan(Request $request, string $id){
+    public function upadatejabatan(Request $request, string $id)
+    {
         $jabatanupdate = Jabatan::find($id);
         if ($jabatanupdate) {
             $validatedata = $request->validate([
@@ -159,7 +159,8 @@ class GuruKaryawanController extends Controller
         }
     }
 
-    public function deletejabatan(string $id){
+    public function deletejabatan(string $id)
+    {
         $jabatandelete = Jabatan::find($id);
         if ($jabatandelete) {
             $jabatandelete->delete();
@@ -173,6 +174,4 @@ class GuruKaryawanController extends Controller
             ], 500);
         }
     }
-
-
 }

@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Storage;
 
 class KurikulumController extends Controller
 {
+    public function indexviewkurikulum(){
+        return view('akademik.kurikulum');
+    }
     public function indexkurikulum(){
         $kurikulum = Kurikulum::all();
         return KurikulumResource::collection(($kurikulum));

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nip');
             $table->string('nomor_telepon');
             $table->string('jenis_guru');
+            $table->string('foto');
             $table->timestamps();
 
             $table->foreign('jabatan_id')->references('id')->on('jabatan');

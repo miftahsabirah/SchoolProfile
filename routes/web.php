@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\AkademikController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KurikulumController;
+use App\Http\Controllers\ProfileSekolahController;
+use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     // return view('home');
+
     return view('admin/guruKaryawan');
 });
 
@@ -75,3 +81,29 @@ Route::get('/detailBerita', function () {
 
 
 
+route::get('/profile/sambutan', [ProfileSekolahController::class,'indekprofielview'])->name('profile.sambutan');
+route::get('/profile/sejarah', [ProfileSekolahController::class,'indekprofielviewsejarah'])->name('profile.sejarah');
+route::get('/profile/visimisi', [ProfileSekolahController::class,'indekprofielviewvisimisi'])->name('profile.visimisi');
+route::get('/profile/akreditasi', [ProfileSekolahController::class,'indekprofielviewakreditasi'])->name('profile.akreditasi');
+route::get('/profile/guru', [ProfileSekolahController::class,'indekprofielviewguru'])->name('profile.guru');
+
+Route::get('home', [HomeController::class, 'indexhome'])->name('home');
+
+Route::get('/akademik/kurikulum', [KurikulumController::class, 'indexviewkurikulum'])->name('akademik.kurikulum');
+Route::get('/akademik/kalenderakademik', [AkademikController::class, 'indexviewkalender'])->name('akademik.kalenderakademik');
+
+
+Route::get('/organisasi/dewansekolah', [ViewController::class, 'indexvieworganisasi'])->name('organisasi.dewansekolah');
+Route::get('/organisasi/bagan', [ViewController::class, 'indexviewstrukturbagan'])->name('organisasi.bagan');
+Route::get('/organisasi/tugas', [ViewController::class, 'indexviewstrukturtugas'])->name('organisasi.tugas');
+Route::get('/informasi/berita', [ViewController::class, 'indexviewberita'])->name('informasi.berita');
+Route::get('/sarpras', [ViewController::class, 'indexviewsarpras'])->name('sarpras');
+Route::get('/profil/detailAkreditasi/{id}', [ViewController::class, 'indexviewdetailakreditasi'])->name('profil.detailAkreditasi');
+
+Route::get('/galeri', function () {
+    return view('galeri/galeri');
+})->name('galeri');
+
+Route::get('/berita', function () {
+    return view('informasi/berita');
+})->name('berita');

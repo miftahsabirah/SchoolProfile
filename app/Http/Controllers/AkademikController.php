@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 
 class AkademikController extends Controller
 {
+    public function indexviewkalender(){
+        return view('akademik.kalenderAkademik');
+    }
     public function indexakademik(){
         $akademiks = Akademik::with('kurikulum')->get();
         return AkademikResource::collection($akademiks);
