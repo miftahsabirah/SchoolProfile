@@ -9,6 +9,7 @@ Appereance
 <div class="flex-grow py-6 px-12">
 
     <div class="flex space-x-6">
+        {{-- test --}}
         <!-- Settings Navbar Form -->
         <div class="bg-white p-6 rounded-lg shadow-lg w-2/3">
             <h2 class="text-sm font-medium mb-6">Settings Navbar</h2>
