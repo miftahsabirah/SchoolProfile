@@ -50,7 +50,7 @@
                             if (!filter || item.jabatan.nama_jabatan.toLowerCase() === filter
                                 .toLowerCase()) {
                                 var imgUrl = "{{ asset('storage/post_guru_karyawan') }}/" + item.foto;
-                                html += '<div class="relative">';
+                                html += '<div class="relative h-30 w-30">';
                                 html += '<img class="h-auto w-full" src="' + imgUrl + '" alt="' + item
                                     .nama_guru + '">';
                                 html +=
