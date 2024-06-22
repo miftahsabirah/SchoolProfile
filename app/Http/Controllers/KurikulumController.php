@@ -15,7 +15,7 @@ class KurikulumController extends Controller
     }
     public function indexkurikulum(){
         $kurikulum = Kurikulum::all();
-        return KurikulumResource::collection(($kurikulum));
+        return response()->json($kurikulum);
     }
 
     public function postkurikulum(Request $request){

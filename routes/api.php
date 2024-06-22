@@ -56,7 +56,7 @@ Route::put('updatematapelajaran/{id}', [GurumapelController::class, 'updatematap
 Route::delete('deletematapelajaran/{id}', [GurumapelController::class, 'deletematapelajaran']);
 
 //Route jabatan_guru
-Route::get('getjabatan', [GuruKaryawanController::class, 'indexjabatan']);
+Route::get('getjabatan', [GuruKaryawanController::class, 'indexjabatan'])->name('getjabatan');
 Route::post('postjabatan', [GuruKaryawanController::class, 'postjabatan']);
 Route::put('upadatejabatan/{id}', [GuruKaryawanController::class, 'upadatejabatan']);
 Route::delete('deletejabatan/{id}', [GuruKaryawanController::class, 'deletejabatan']);
@@ -86,13 +86,13 @@ Route::put('updatesarpras/{id}', [ImageController::class, 'updatesarpras']);
 Route::delete('deletesarpras/{id}', [ImageController::class, 'deletesarpras']);
 
 // Route Kurikulum
-Route::get('getkurikulum', [KurikulumController::class, 'indexkurikulum']);
+Route::get('getkurikulum', [KurikulumController::class, 'indexkurikulum'])->name('getkurikulum');
 Route::post('postkurikulum', [KurikulumController::class, 'postkurikulum']);
 Route::put('updatekurikulum/{id}', [KurikulumController::class, 'updatekurikulum']);
 Route::delete('deletekurikulum/{id}', [KurikulumController::class, 'deletekurikulum']);
 
 // Route Akademik 
-Route::get('getakademik', [AkademikController::class, 'indexakademik']);
+Route::get('getakademik', [AkademikController::class, 'indexakademik'])->name('getakademik');
 Route::post('postakademik', [AkademikController::class, 'postakademik']);
 Route::put('updateakademik/{id}', [AkademikController::class, 'updateakademik']);
 Route::delete('deleteakademik/{id}', [AkademikController::class, 'deleteakademik']);
