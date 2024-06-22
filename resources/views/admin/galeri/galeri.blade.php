@@ -1,24 +1,29 @@
 @extends('admin/master')
 
 @section('title')
-Berita
+Galeri
 @endsection
 
 @section('content')
 <div class="bg-gray-100 flex justify-center h-auto">
     <div class="w-full mx-12 shadow-xl rounded-lg flex flex-col">
-        <h2 class="text-sm font-medium px-6 py-3">Setting Berita</h2>
+        <h2 class="text-sm font-medium px-6 py-3">Setting Guru dan Karyawan</h2>
         <div class="bg-white rounded-br-lg rounded-bl-lg shadow-lg flex-1 overflow-y-auto">
-            <button class="bg-blue-600 text-white text-xs px-4 py-2 rounded-lg m-4">+ Tambah Berita</button>
+            <button class="bg-blue-600 text-white text-xs px-4 py-2 rounded-lg m-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>                  
+                Tambah Foto
+            </button>
+            
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-2/12">Judul Berita</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori Berita</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-4/12">Deskripsi</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-2/12">Foto</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Judul</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Deskripsi</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aftif</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                     </tr>
@@ -48,7 +53,8 @@ Berita
 
 <script>
     const data = [
-        { id: 1, judulBerita: 'Pak Babin Mengunjungi SD Ciren', kategoriBerita: 'Prestasi', deskripsi: 'PrestasiPrestasi Prestasi Prestasi Prestasi Prestasi Prestasi Prestasi', tanggal: '2024-06-22', foto: 'img/guru.png', aktif: true },
+        { id: 1, foto: 'img/guru.png', judul: 'Acara Buka Bersama', kategori: 'Event Sekolah', deskripsi: '12345678', aktif: true },
+       
         
     ];
 
@@ -66,13 +72,12 @@ Berita
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td class="px-4 py-4 whitespace-normal">${row.id}</td>
-                <td class="px-4 py-4 whitespace-normal">${row.judulBerita}</td>
-                <td class="px-4 py-4 whitespace-normal">${row.kategoriBerita}</td>
-                <td class="px-4 py-4 whitespace-normal">${row.deskripsi}</td>
-                <td class="px-4 py-4 whitespace-normal">${row.tanggal}</td>
                 <td class="px-4 py-4 whitespace-normal">
                     <img src="${row.foto}" alt="Foto" class="h-20 w-20 object-cover">
                 </td>
+                <td class="px-4 py-4 whitespace-normal">${row.judul}</td>
+                <td class="px-4 py-4 whitespace-normal">${row.kategori}</td>
+                <td class="px-4 py-4 whitespace-normal">${row.deskripsi}</td>
                 <td class="px-4 py-4 whitespace-normal">
                     <label class="flex cursor-pointer">
                         <input type="checkbox" ${row.aktif ? 'checked' : ''} class="sr-only peer">
@@ -80,7 +85,7 @@ Berita
                     </label>
                 </td>
                 <td class="px-4 py-4 whitespace-normal">
-                    <div class="flex justify-center items-center">
+                    <div class="flex items-center">
                         <button class="bg-green-700 text-white px-2 py-1.5 rounded flex items-center">
                             <svg class="w-4 h-4 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd" d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z" clip-rule="evenodd"/>
@@ -107,11 +112,11 @@ Berita
                                         <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                                         </svg>
-                                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this product?</h3>
+                                        <h3 class="mb-5 text-sm font-normal text-gray-500 dark:text-gray-400">Apakah kamu ingin menghapus konten ini</h3>
                                         <button data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                                            Yes, I'm sure
+                                            Ya
                                         </button>
-                                        <button data-modal-hide="popup-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No, cancel</button>
+                                        <button data-modal-hide="popup-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Tidak</button>
                                     </div>
                                 </div>
                             </div>

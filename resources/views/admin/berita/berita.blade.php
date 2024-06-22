@@ -1,26 +1,29 @@
 @extends('admin/master')
 
 @section('title')
-Guru dan Karyawan
+Berita
 @endsection
 
 @section('content')
 <div class="bg-gray-100 flex justify-center h-auto">
     <div class="w-full mx-12 shadow-xl rounded-lg flex flex-col">
-        <h2 class="text-sm font-medium px-6 py-3">Setting Guru dan Karyawan</h2>
+        <h2 class="text-sm font-medium px-6 py-3">Setting Berita</h2>
         <div class="bg-white rounded-br-lg rounded-bl-lg shadow-lg flex-1 overflow-y-auto">
-            <button class="bg-blue-600 text-white text-xs px-4 py-2 rounded-lg m-4">+ Tambah Guru dan Karyawan</button>
+            <button class="bg-blue-600 text-white text-xs px-4 py-2 rounded-lg m-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 mr-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>                  
+                Tambah Berita
+            </button>
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-2/12">Judul Berita</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori Berita</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-4/12">Deskripsi</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-2/12">Foto</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Guru</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NIP</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jabatan</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No. Telp</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mapel</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aftif</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                     </tr>
@@ -50,9 +53,7 @@ Guru dan Karyawan
 
 <script>
     const data = [
-        { id: 1, foto: 'img/guru.png', namaGuru: 'Miftah Sabirah', email: 'miftahsabirah@gmail.com', nip: '12345678', jabatan: 'Guru', noTelp: '0895123456', mapel: 'matematika', aktif: true },
-        { id: 1, foto: 'img/guru.png', namaGuru: 'Ananda Putri', email: 'ana@gmail.com', nip: '12345678', jabatan: 'Guru', noTelp: '0895123456', mapel: 'matematika', aktif: true },
-        { id: 1, foto: 'img/guru.png', namaGuru: 'Muflih', email: 'muflih@gmail.com', nip: '12345678', jabatan: 'Guru', noTelp: '0895123456', mapel: 'matematika', aktif: true },
+        { id: 1, judulBerita: 'Pak Babin Mengunjungi SD Ciren', kategoriBerita: 'Prestasi', deskripsi: 'PrestasiPrestasi Prestasi Prestasi Prestasi Prestasi Prestasi Prestasi', tanggal: '2024-06-22', foto: 'img/guru.png', aktif: true },
         
     ];
 
@@ -70,15 +71,13 @@ Guru dan Karyawan
             const tr = document.createElement('tr');
             tr.innerHTML = `
                 <td class="px-4 py-4 whitespace-normal">${row.id}</td>
+                <td class="px-4 py-4 whitespace-normal">${row.judulBerita}</td>
+                <td class="px-4 py-4 whitespace-normal">${row.kategoriBerita}</td>
+                <td class="px-4 py-4 whitespace-normal">${row.deskripsi}</td>
+                <td class="px-4 py-4 whitespace-normal">${row.tanggal}</td>
                 <td class="px-4 py-4 whitespace-normal">
                     <img src="${row.foto}" alt="Foto" class="h-20 w-20 object-cover">
                 </td>
-                <td class="px-4 py-4 whitespace-normal">${row.namaGuru}</td>
-                <td class="px-4 py-4 whitespace-normal">${row.email}</td>
-                <td class="px-4 py-4 whitespace-normal">${row.nip}</td>
-                <td class="px-4 py-4 whitespace-normal">${row.jabatan}</td>
-                <td class="px-4 py-4 whitespace-normal">${row.noTelp}</td>
-                <td class="px-4 py-4 whitespace-normal">${row.mapel}</td>
                 <td class="px-4 py-4 whitespace-normal">
                     <label class="flex cursor-pointer">
                         <input type="checkbox" ${row.aktif ? 'checked' : ''} class="sr-only peer">
@@ -86,7 +85,7 @@ Guru dan Karyawan
                     </label>
                 </td>
                 <td class="px-4 py-4 whitespace-normal">
-                    <div class="flex justify-center items-center">
+                    <div class="flex items-center">
                         <button class="bg-green-700 text-white px-2 py-1.5 rounded flex items-center">
                             <svg class="w-4 h-4 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd" d="M11.32 6.176H5c-1.105 0-2 .949-2 2.118v10.588C3 20.052 3.895 21 5 21h11c1.105 0 2-.948 2-2.118v-7.75l-3.914 4.144A2.46 2.46 0 0 1 12.81 16l-2.681.568c-1.75.37-3.292-1.263-2.942-3.115l.536-2.839c.097-.512.335-.983.684-1.352l2.914-3.086Z" clip-rule="evenodd"/>
@@ -123,7 +122,7 @@ Guru dan Karyawan
                             </div>
                         </div>
 
-                    </div>    
+                    </div>       
                 </td>
             `;
 
