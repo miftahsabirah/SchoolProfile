@@ -7,7 +7,7 @@
     Sambutan
 @endsection
 @section('content')
-@include('header')
+    @include('header')
     <div class="py-16 px-4 mx-auto max-w-screen-xl">
         <div class="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-start mb-4 lg:mb-0">
             <div class="relative " id="namakepalasekolah">
@@ -29,7 +29,7 @@
     </div>
 @endsection
 @section('addScript')
-    <script>  
+    <script>
         $.ajax({
             url: "{!! route('profile') !!}",
             type: "GET",
@@ -57,24 +57,30 @@
             type: "GET",
             dataType: "json",
             success: function(response) {
-                    var html = '';
-                    var kepalasekolah = null;
-                    response.forEach(function(item) {
-                        if (item.jabatan.nama_jabatan === 'Kepala sekolah') {
-                            kepalasekolah = item;
-                        }
-                    });
-                    if (kepalasekolah) {
+                var html = '';
+                var kepalasekolah = null;
+
+                // Cari kepala sekolah berdasarkan jabatan
+                response.forEach(function(item) {
+                    if (item.jabatan.nama_jabatan.toLowerCase() ===
+                        'kepala sekolah') { 
+                        kepalasekolah = item;
+                    }
+                });
+
+                if (kepalasekolah) {
                     var imgUrl = "{{ asset('storage/post_guru_karyawan') }}/" + kepalasekolah.foto;
-                    html += '<img class="h-auto max-w-40 lg:w-auto" src="' + imgUrl + '" alt="' + kepalasekolah.nama_guru + '">';
-                    html += '<div class="absolute bottom--2 left-0 right-0 text-center text-white px-4 py-2 bg-blue-950">';
+                    html += '<img class="h-auto max-w-40 lg:w-auto" src="' + imgUrl + '" alt="' + kepalasekolah
+                        .nama_guru + '">';
+                    html +=
+                        '<div class="absolute bottom--2 left-0 right-0 text-center text-white px-4 py-2 bg-blue-950">';
                     html += '<p class="font-bold text-2xl">' + kepalasekolah.nama_guru + '</p>';
                     html += '<p class="text-xl font-normal">' + kepalasekolah.jabatan.nama_jabatan + '</p>';
                     html += '</div>';
                     $('#namakepalasekolah').html(html);
-                    } else {
-                        console.log("Data Kepala Sekolah tidak ditemukan.");
-                    }
+                } else {
+                    console.log("Data Kepala Sekolah tidak ditemukan.");
+                }
             },
             error: function(xhr, status, error) {
                 console.log(error);

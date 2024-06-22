@@ -30,6 +30,7 @@ Route::post('createuser', [LoginController::class],'store');
 Route::post('createuser', [LoginController::class],'store');
 
 Route::get('profile', [ProfileSekolahController::class, 'indexprofileschool'])->name('profile');
+Route::post('postprofile', [ProfileSekolahController::class, 'postprofile'])->name('postprofile');
 
 Route::put('updateprofile1/{id}', [ProfileSekolahController::class, 'updateprofile1']);
 
@@ -72,7 +73,7 @@ Route::put('updatejurusan/{id}', [SiswaController::class, 'updatejurusan']);
 Route::delete('deletejurusan/{id}', [SiswaController::class, 'deletejurusan']);
 
 // Route galeri
-Route::get('getgaleri', [ImageController::class, 'indexgaleri']);
+Route::get('getgaleri', [ImageController::class, 'indexgaleri'])->name('getgaleri');
 Route::post('postgaleri', [ImageController::class, 'postgaleri']);
 Route::put('updategaleri/{id}', [ImageController::class, 'updategaleri']);
 Route::delete('deletegaleri/{id}', [ImageController::class, 'deletegaleri']);
