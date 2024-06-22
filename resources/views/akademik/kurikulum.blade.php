@@ -2,6 +2,10 @@
 
 @section('title')
     Kurikulum
+    Kurikulum
+@endsection
+@section('page_title')
+    Kurikulum
 @endsection
 @section('page_title')
     Kurikulum
