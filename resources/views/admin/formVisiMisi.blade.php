@@ -7,8 +7,8 @@ Form Visi dan Misi
 
 @section('content')
 
-<div class="bg-gray-100 flex flex-col justify-center items-center h-auto">
-    <div class="w-full max-w-4xl shadow-xl rounded-lg mb-16">
+<div class="bg-gray-100 px-12 flex flex-col justify-center items-center h-auto">
+    <div class="w-full shadow-xl rounded-lg mb-16">
         <h2 class="text-sm font-medium px-6 py-3">Setting Visi</h2>
         <div class="bg-white p-6 rounded-br-lg rounded-bl-lg shadow-lg w-full h-auto">
             <form>
@@ -104,7 +104,7 @@ Form Visi dan Misi
         </div>
     </div>
 
-    <div class="w-full max-w-4xl shadow-xl rounded-lg">
+    <div class="w-full shadow-xl rounded-lg">
         <h2 class="text-sm font-medium px-6 py-3">Setting Misi</h2>
         <div class="bg-white p-6 rounded-br-lg rounded-bl-lg shadow-lg w-full h-auto">
             <form>
