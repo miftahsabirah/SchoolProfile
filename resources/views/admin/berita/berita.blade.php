@@ -77,6 +77,15 @@ Berita
         });
     }
 
+    function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('id-ID', { // 'id-ID' for Indonesian date format
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+}
+
     function renderTable() {
         const tableBody = $('#table-body');
         tableBody.empty();
@@ -90,11 +99,13 @@ Berita
             const tr = `
                 <tr>
                     <td class="px-4 py-4 whitespace-normal">${row.id}</td>
-                    <td class="px-4 py-4 whitespace-normal">
-                        <img src="/storage/post_img/${row.gambar}" alt="Foto" class="h-20 w-20 object-cover">
-                    </td>
                     <td class="px-4 py-4 whitespace-normal">${row.judul}</td>
                     <td class="px-4 py-4 whitespace-normal">${row.kategori}</td>
+                    <td class="px-4 py-4 whitespace-normal">${row.isi}</td>
+                    <td class="px-4 py-4 whitespace-normal">${formatDate(row.created_at)}</td>
+                    <td class="px-4 py-4 whitespace-normal">
+                        <img src="/storage/informasi/${row.gambar}" alt="Foto" class="h-20 w-20 object-cover">
+                    </td>
                     <td class="px-4 py-4 whitespace-normal">
                 <label class="flex cursor-pointer">
                     <input type="checkbox" ${row.aktif ? 'checked' : ''} class="sr-only peer">
