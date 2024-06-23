@@ -10,7 +10,7 @@ Form Berita
     <div class="w-full shadow-xl rounded-lg">
         <h2 class="text-sm font-medium px-6 py-3">Settings Berita</h2>
         <div class="bg-white p-6 rounded-br-lg rounded-bl-lg shadow-lg w-full">
-            <form>
+            <form id="beritaForm" enctype="multipart/form-data">
                 <div class="mb-5">
                     <label for="infoBerita" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tambahkan Info Berita</label>
                     <textarea id="infoBerita" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Berita terkini yang dapat dilihat..."></textarea>
@@ -150,6 +150,29 @@ Form Berita
 {{-- js buat datepicker --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#beritaForm').on('submit', function(event) {
+                event.preventDefault();
+                var formData = new FormData(this);
 
+                $.ajax({
+                    url: "http://127.0.0.1:8000/api/postinformasi",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType: "json",
+                    success: function(response) {
+                        console.log(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
 
 @endsection
