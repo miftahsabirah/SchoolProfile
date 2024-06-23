@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     // return view('home');
 
-    return view('admin/galeri/galeri');
+    return view('admin/berita/berita');
 });
 
 // Route::get('/', function () {

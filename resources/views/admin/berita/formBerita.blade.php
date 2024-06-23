@@ -6,8 +6,8 @@ Form Berita
 
 @section('content')
 
-<div class="flex items-center justify-center">
-    <div class="w-full max-w-4xl shadow-xl rounded-lg">
+<div class="flex items-center justify-center px-12">
+    <div class="w-full shadow-xl rounded-lg">
         <h2 class="text-sm font-medium px-6 py-3">Settings Berita</h2>
         <div class="bg-white p-6 rounded-br-lg rounded-bl-lg shadow-lg w-full">
             <form>
