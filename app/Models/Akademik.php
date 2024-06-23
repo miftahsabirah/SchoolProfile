@@ -18,6 +18,7 @@ class Akademik extends Model
         'tanggal_selesai',
         'deskripsi',
         'file_berkas',
+        'gambar',
     ];
 
     public function kurikulum(): BelongsTo

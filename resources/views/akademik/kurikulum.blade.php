@@ -2,16 +2,18 @@
 
 @section('title')
     Kurikulum
+    Kurikulum
+@endsection
+@section('page_title')
+    Kurikulum
 @endsection
 @section('page_title')
     Kurikulum
 @endsection
 @section('content')
     @include('header')
-
     <div class="text-center m-10" id="nama_sekolah">
     </div>
-
 
 
     <div class="mx-auto mt-5 max-w-6xl text-justify text-2xl text-gray-900 sm:mt-10" id="kurikulum">

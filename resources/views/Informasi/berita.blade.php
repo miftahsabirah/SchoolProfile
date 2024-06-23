@@ -17,15 +17,15 @@
                     class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 filter-link">Semua</a>
             </li>
             <li class="me-2">
-                <a href="#" data-filter="guru"
+                <a href="#" data-filter="Artikel"
                     class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 filter-link">Artikel</a>
             </li>
             <li class="me-2">
-                <a href="#" data-filter="Kepala Sekolah"
+                <a href="#" data-filter="Pengumuman"
                     class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 filter-link">Pengumuman</a>
             </li>
             <li class="me-2">
-                <a href="#" data-filter="karyawan"
+                <a href="#" data-filter="Prestasi"
                     class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 filter-link">Prestasi</a>
             </li>
         </ul>
@@ -37,46 +37,7 @@
                 <div class="grid hidden absolute inset-0 gap-8 transition-all duration-700 ease-linear transform lg:grid-cols-3"
                     data-carousel-item="">
                     <div class="block w-full h-full rounded-lg">
-                        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg">
-                            <div class="flex-shrink-0">
-                                <img class="h-48 w-full object-cover"
-                                    src="https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1679&amp;q=80"
-                                    alt="">
-                            </div>
-                            <div class="flex flex-1 flex-col justify-between bg-white p-6">
-                                <div class="flex-1">
-                                    <p class="text-sm font-medium text-indigo-600">
-                                        <a href="#" class="hover:underline">Article</a>
-                                    </p>
-                                    <a href="#" class="mt-2 block">
-                                        <p class="text-xl font-semibold text-gray-900">Boost your conversion rate</p>
-                                        <p class="mt-3 text-base text-gray-500">Lorem ipsum dolor sit amet consectetur
-                                            adipisicing elit.
-                                            Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi
-                                            cum eos quis dolorum.</p>
-                                    </a>
-                                </div>
-                                <div class="mt-6 flex items-center">
-                                    <div class="flex-shrink-0">
-                                        <a href="#">
-                                            <span class="sr-only">Roel Aufderehar</span>
-                                            <img class="h-10 w-10 rounded-full"
-                                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                                                alt="">
-                                        </a>
-                                    </div>
-                                    <div class="ml-3">
-                                        <p class="text-sm font-medium text-gray-900">
-                                            <a href="#" class="hover:underline">Roel Aufderehar</a>
-                                        </p>
-                                        <div class="flex space-x-1 text-sm text-gray-500">
-                                            <time datetime="2020-03-16">Mar 16, 2020</time>
-                                            <span aria-hidden="true">·</span>
-                                            <span>6 min read</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg" id="informasi_">
                         </div>
                     </div>
 
@@ -87,6 +48,83 @@
 @endsection
 @section('addScript')
     <script>
-        
+        function fetchData(filter = '') {
+            $.ajax({
+                url: "{!! route('getinformasi') !!}",
+                type: "GET",
+                dataType: "json",
+                success: function(response) {
+                    if (Array.isArray(response)) {
+                        var html = '';
+                        response.forEach(function(item) {
+                            if (!filter || item.kategori.toLowerCase() === filter
+                                .toLowerCase()) {
+                                var imgUrl = "{{ asset('storage/informasi') }}/" + item.gambar;
+                                var createdDate = new Date(item.created_at);
+                                var formattedDate = createdDate.toLocaleDateString('en-US', {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric'
+                                });
+
+                                html += '<div class="flex-shrink-0">';
+                                html += '<img class="h-48 w-full object-cover" src="' + imgUrl +
+                                    '" alt="">';
+                                html += '</div>';
+                                html +=
+                                    '<div class="flex flex-1 flex-col justify-between bg-white p-6">';
+                                html += '<div class="flex-1">';
+                                html += '<p class="text-sm font-medium text-indigo-600">';
+                                html += '<a class="hover:underline">' + item.kategori + '</a>';
+                                html += '</p>';
+                                html += '<a class="mt-2 block">';
+                                html += '<p class="text-xl font-semibold text-gray-900">' + item.judul +
+                                    '</p>';
+                                html += '<p class="mt-3 text-base text-gray-500">' + item.isi + '</p>';
+                                html += '</a>';
+                                html += '</div>';
+                                html += '<div class="mt-6 flex items-center">';
+                                html += '<div class="ml-3">';
+                                html +=
+                                    '<p class="text-sm font-medium text-gray-900"><a href="#" class="hover:underline">' +
+                                    item.gurukaryawan.nama_guru + '</a></p>';
+                                html += '<div class="flex space-x-1 text-sm text-gray-500">';
+                                html += '<time datetime="' + item.created_at + '">' + formattedDate +
+                                    '</time>';
+                                html += '<span aria-hidden="true">·</span>';
+                                html += '</div>';
+                                html += '</div>';
+                                html += '</div>';
+                                html += '</div>';
+                            }
+                        });
+                        $('#informasi_').html(html);
+                    } else {
+                        console.log("Invalid data format. Expected an array.");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log("AJAX request error:", error);
+                }
+            });
+        }
+        $(document).ready(function() {
+            // Initial data fetch
+            fetchData();
+
+            // Set up click event handlers for the filter links
+            $('.filter-link').click(function(e) {
+
+                e.preventDefault();
+                var filter = $(this).data('filter');
+                fetchData(filter);
+
+                // Update active state
+                $('.filter-link').removeClass(
+                    'text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500');
+
+                $(this).addClass('text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500');
+            });
+        });
     </script>
 @endsection

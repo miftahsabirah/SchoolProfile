@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('kode_pos');
 
             $table->text('deskripsi_sejarah');
-            $table->text('visi_misi');
+            $table->text('visi');
+            $table->text('misi');
             $table->string('motto');
             $table->text('sambuatan_kepsek');
             $table->string('tujuan_sekolah');

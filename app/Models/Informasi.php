@@ -17,13 +17,15 @@ class Informasi extends Model
         'judul',
         'isi',
         'kategori',
+        'gambar',
     ];
-    public function user(): BelongsToMany
+    public function user(): BelongsTo
     {
-        return $this->belongsToMany(User::class, 'user_id', 'id' );
+        return $this->belongsTo(User::class, 'users_id', 'id');
     }
-    public function gurukaryawan(): BelongsToMany
+
+    public function gurukaryawan(): BelongsTo
     {
-        return $this->belongsToMany(GuruKaryawan::class, 'guru_karyawan_id', 'id' );
+        return $this->belongsTo(GuruKaryawan::class, 'guru_karyawan_id', 'id');
     }
 }
