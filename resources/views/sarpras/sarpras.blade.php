@@ -18,7 +18,7 @@
 @section('addScript')
     <script>
         $.ajax({
-            url: "{!! route('getsarpras') !!}",
+            url: "http://127.0.0.1:8000/api/getsarpras",
             type: "GET",
             dataType: "json",
             success: function(response) {

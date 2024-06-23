@@ -31,7 +31,7 @@
 @section('addScript')
     <script>
         $.ajax({
-            url: "{!! route('profile') !!}",
+            url: "http://127.0.0.1:8000/api/profile",
             type: "GET",
             dataType: "json",
             success: function(response) {
@@ -53,7 +53,7 @@
         });
 
         $.ajax({
-            url: "{!! route('getguru') !!}",
+            url: "http://127.0.0.1:8000/api/getguru",
             type: "GET",
             dataType: "json",
             success: function(response) {
@@ -63,7 +63,7 @@
                 // Cari kepala sekolah berdasarkan jabatan
                 response.forEach(function(item) {
                     if (item.jabatan.nama_jabatan.toLowerCase() ===
-                        'kepala sekolah') { 
+                        'kepala sekolah') {
                         kepalasekolah = item;
                     }
                 });
