@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('judul');
             $table->text('isi');
             $table->string('kategori');
+            $table->string('gambar');
             $table->timestamps();
 
             $table->foreign('users_id')->references('id')->on('users');

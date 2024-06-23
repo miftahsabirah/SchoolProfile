@@ -107,6 +107,17 @@ class ImageController extends Controller
         return response()->json($sarpras);
     }
 
+    public function indexdetailsarpras($id){
+        $detailsarpras = Sarpras::find($id);
+
+        if($detailsarpras){
+            return response()->json($detailsarpras);
+
+        }else{
+            return response()->json(null);
+        }
+    }
+
     public function postsarpras(Request $request)
     {
         $this->validate($request, [

@@ -54,7 +54,8 @@
 
                     if (Array.isArray(response)) {
                         response.forEach(function(item) {
-                            if (!filter || item.kategori.toLowerCase() === filter.toLowerCase()) {
+                            if (item.kategori.toLowerCase() !== 'bagan' && (!filter || item.kategori
+                                    .toLowerCase() === filter.toLowerCase() || filter === 'semua')) {
                                 var imgUrl = "{{ asset('storage/post_img') }}/" + item.gambar;
                                 var galeriitem = $('<div class="relative group">' +
                                     '<img class="w-full h-full rounded-lg object-cover" src="' +
@@ -63,7 +64,8 @@
                                     '<svg class="w-8 h-8 rounded-full bg-orange-500 text-white p-1 fill-current transition duration-300 mb-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">' +
                                     '<path d="M9.707 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.086 11H2a1 1 0 010-2h12.086l-3.793-3.793a1 1 0 010-1.414z" />' +
                                     '</svg>' +
-                                    '<p class="text-white text-2xl underline font-bold">' + item.judul + '</p>' +
+                                    '<p class="text-white text-2xl underline font-bold">' + item
+                                    .judul + '</p>' +
                                     '</div>' +
                                     '<a href="#" class="absolute inset-0 z-20"></a>' +
                                     '</div>');
@@ -91,7 +93,8 @@
                 fetchData(filter);
 
                 // Update active state
-                $('.filter-link').removeClass('text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500');
+                $('.filter-link').removeClass(
+                    'text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500');
                 $(this).addClass('text-blue-600 border-blue-600 dark:text-blue-500 dark:border-blue-500');
             });
         });

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('tanggal_selesai');
             $table->text('deskripsi');
             $table->string('file_berkas');
+            $table->string('gambar');
             $table->timestamps();
 
             $table->foreign('kurikulum_id')->references('id')->on('kurikulum')->onDelete('cascade');
