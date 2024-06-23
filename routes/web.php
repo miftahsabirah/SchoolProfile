@@ -116,3 +116,15 @@ Route::get('/galeri', function () {
 Route::get('/berita', function () {
     return view('informasi/berita');
 })->name('berita');
+
+Route::get('/admingaleri', function () {
+    return view('admin/galeri/galeri');
+})->name('admingaleri');
+
+Route::get('/adminformgaleri', function () {
+    return view('admin/galeri/formGaleri');
+})->name('adminformgaleri');
+
+Route::get('/adminformeditgaleri', function () {
+    return view('admin/galeri/formeditGaleri');
+})->name('adminformeditgaleri');
