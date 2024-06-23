@@ -21,13 +21,11 @@ Guru dan Karyawan
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-2/12">Foto</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama Guru</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NIP</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jabatan</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No. Telp</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Mapel</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aftif</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksij</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aktif</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                     </tr>
                 </thead>
                 <tbody id="table-body" class="bg-white divide-y divide-gray-200 text-xs font-medium">
@@ -53,38 +51,51 @@ Guru dan Karyawan
     </div>
 </div>
 
-<script>
-    const data = [
-        { id: 1, foto: 'img/guru.png', namaGuru: 'Miftah Sabirah', email: 'miftahsabirah@gmail.com', nip: '12345678', jabatan: 'Guru', noTelp: '0895123456', mapel: 'matematika', aktif: true },
-        { id: 1, foto: 'img/guru.png', namaGuru: 'Ananda Putri', email: 'ana@gmail.com', nip: '12345678', jabatan: 'Guru', noTelp: '0895123456', mapel: 'matematika', aktif: true },
-        { id: 1, foto: 'img/guru.png', namaGuru: 'Muflih', email: 'muflih@gmail.com', nip: '12345678', jabatan: 'Guru', noTelp: '0895123456', mapel: 'matematika', aktif: true },
-        
-    ];
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        let data = [];
+        let currentPage = 1;
+        let rowsPerPage = 5;
 
-    let currentPage = 1;
-    let rowsPerPage = 5;
- 
-    function renderTable() {
-        const tableBody = document.getElementById('table-body');
-        tableBody.innerHTML = '';
-        const start = (currentPage - 1) * rowsPerPage;
-        const end = start + rowsPerPage;
-        const pageData = data.slice(start, end);
+        function fetchData() {
+            $.ajax({
+                url: '{!! route('getguru') !!}',
+                type: 'GET',
+                dataType: 'json',
+                success: function(response) {
+                    console.log("Response data:", response); // Log response data
+                    if (Array.isArray(response)) {
+                        data = response;
+                        renderTable();
+                    } else {
+                        console.error("Invalid data format. Expected an array.");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX error:", error);
+                }
+            });
+        }
 
-        for (const row of pageData) {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td class="px-4 py-4 whitespace-normal">${row.id}</td>
-                <td class="px-4 py-4 whitespace-normal">
-                    <img src="${row.foto}" alt="Foto" class="h-20 w-20 object-cover">
-                </td>
-                <td class="px-4 py-4 whitespace-normal">${row.namaGuru}</td>
-                <td class="px-4 py-4 whitespace-normal">${row.email}</td>
-                <td class="px-4 py-4 whitespace-normal">${row.nip}</td>
-                <td class="px-4 py-4 whitespace-normal">${row.jabatan}</td>
-                <td class="px-4 py-4 whitespace-normal">${row.noTelp}</td>
-                <td class="px-4 py-4 whitespace-normal">${row.mapel}</td>
-                <td class="px-4 py-4 whitespace-normal">
+        function renderTable() {
+            const tableBody = $('#table-body');
+            tableBody.empty();
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const pageData = data.slice(start, end);
+
+            console.log("Page data:", pageData); // Log data untuk halaman saat ini
+
+            pageData.forEach(row => {
+                const tr = `
+                    <tr>
+                        <td class="px-4 py-4 whitespace-normal">${row.id}</td>
+                        <td class="px-4 py-4 whitespace-normal">
+                            <img src="/storage/post_img/${row.gambar}" alt="Foto" class="h-20 w-20 object-cover">
+                        </td>
+                        <td class="px-4 py-4 whitespace-normal">${row.judul}</td>
+                        <td class="px-4 py-4 whitespace-normal">${row.kategori}</td>
+                        <td class="px-4 py-4 whitespace-normal">
                     <label class="flex cursor-pointer">
                         <input type="checkbox" ${row.aktif ? 'checked' : ''} class="sr-only peer">
                         <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
@@ -127,25 +138,21 @@ Guru dan Karyawan
                                 </div>
                             </div>
                         </div>
+                    </tr>
+                `;
+                tableBody.append(tr);
+            });
 
-                    </div>    
-                </td>
-            `;
+            // Update info "5 dari 15"
+            const infoElement = document.getElementById('dataInfo');
+            const currentPageStart = (currentPage - 1) * rowsPerPage + 1;
+            const currentPageEnd = Math.min(currentPage * rowsPerPage, data.length);
+            infoElement.textContent = `${currentPageStart} - ${currentPageEnd} dari ${data.length}`;
 
-
-            tableBody.appendChild(tr);
+            renderPagination();
         }
 
-        // Update info "5 dari 15"
-        const infoElement = document.getElementById('dataInfo');
-        const currentPageStart = (currentPage - 1) * rowsPerPage + 1;
-        const currentPageEnd = Math.min(currentPage * rowsPerPage, data.length);
-        infoElement.textContent = `${currentPageStart} - ${currentPageEnd} dari ${data.length}`;
-
-        renderPagination();
-    }
-
-    function renderPagination() {
+        function renderPagination() {
         const pagination = document.getElementById('pagination');
         pagination.innerHTML = '';
 
@@ -186,12 +193,13 @@ Guru dan Karyawan
         pagination.appendChild(createPageButton('❯❯', totalPages, false));
     }
 
-    document.getElementById('rowsPerPage').addEventListener('change', function() {
-        rowsPerPage = parseInt(this.value);
-        currentPage = 1;
-        renderTable();
-    });
+        $(document).ready(function() {
+            $('#rowsPerPage').on('change', (event) => {
+                rowsPerPage = parseInt(event.target.value, 10);
+                renderTable();
+            });
 
-    renderTable();
-</script>
+            fetchData();
+        });
+    </script>
 @endsection

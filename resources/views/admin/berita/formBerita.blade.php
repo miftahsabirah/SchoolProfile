@@ -6,8 +6,8 @@ Form Berita
 
 @section('content')
 
-<div class="flex items-center justify-center">
-    <div class="w-full max-w-4xl shadow-xl rounded-lg">
+<div class="flex items-center justify-center px-12">
+    <div class="w-full shadow-xl rounded-lg">
         <h2 class="text-sm font-medium px-6 py-3">Settings Berita</h2>
         <div class="bg-white p-6 rounded-br-lg rounded-bl-lg shadow-lg w-full">
             <form>
@@ -36,7 +36,7 @@ Form Berita
 
                 <div class="mb-5">
                     <label for="tanggalBerita" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal</label>
-                    <div class="relative max-w-sm">
+                    <div class="relative">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
@@ -149,6 +149,7 @@ Form Berita
 
 {{-- js buat datepicker --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
+
 
 
 @endsection

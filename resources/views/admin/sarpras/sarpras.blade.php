@@ -1,30 +1,29 @@
 @extends('admin/master')
 
 @section('title')
-Berita
+Sarana dan Prasarana
 @endsection
 
 @section('content')
 <div class="bg-gray-100 flex justify-center h-auto">
     <div class="w-full mx-12 shadow-xl rounded-lg flex flex-col">
-        <h2 class="text-sm font-medium px-6 py-3">Setting Berita</h2>
+        <h2 class="text-sm font-medium px-6 py-3">Setting Sarana dan Prasarana</h2>
         <div class="bg-white rounded-br-lg rounded-bl-lg shadow-lg flex-1 overflow-y-auto">
             <button class="bg-blue-600 text-white text-xs px-4 py-2 rounded-lg m-4 flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>                  
-                Tambah Berita
+                Tambah Sarpras
             </button>
+            
             <table class="min-w-full divide-y divide-gray-200">
                 <thead class="bg-gray-50">
                     <tr>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-2/12">Judul Berita</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Kategori Berita</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-4/12">Deskripsi</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-2/12">Foto</th>
-                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aftif</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Judul</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-3/12">Deskripsi</th>
+                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aktif</th>
                         <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Aksi</th>
                     </tr>
                 </thead>
@@ -59,7 +58,7 @@ Berita
 
     function fetchData() {
         $.ajax({
-            url: '{!! route('getinformasi') !!}',
+            url: '{!! route('getsarpras') !!}',
             type: 'GET',
             dataType: 'json',
             success: function(response) {
@@ -77,15 +76,6 @@ Berita
         });
     }
 
-    function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('id-ID', { // 'id-ID' for Indonesian date format
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    });
-}
-
     function renderTable() {
         const tableBody = $('#table-body');
         tableBody.empty();
@@ -99,19 +89,17 @@ Berita
             const tr = `
                 <tr>
                     <td class="px-4 py-4 whitespace-normal">${row.id}</td>
-                    <td class="px-4 py-4 whitespace-normal">${row.judul}</td>
-                    <td class="px-4 py-4 whitespace-normal">${row.kategori}</td>
-                    <td class="px-4 py-4 whitespace-normal">${row.isi}</td>
-                    <td class="px-4 py-4 whitespace-normal">${formatDate(row.created_at)}</td>
                     <td class="px-4 py-4 whitespace-normal">
-                        <img src="/storage/informasi/${row.gambar}" alt="Foto" class="h-20 w-20 object-cover">
+                        <img src="/storage/post_img/${row.gambar}" alt="Foto" class="h-20 w-20 object-cover">
                     </td>
+                    <td class="px-4 py-4 whitespace-normal">${row.nama_sarpras}</td>
+                    <td class="px-4 py-4 whitespace-normal">${row.deskripsi}</td>
                     <td class="px-4 py-4 whitespace-normal">
-                <label class="flex cursor-pointer">
-                    <input type="checkbox" ${row.aktif ? 'checked' : ''} class="sr-only peer">
-                    <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
-                </label>
-            </td>
+                        <label class="flex cursor-pointer">
+                            <input type="checkbox" ${row.aktif ? 'checked' : ''} class="sr-only peer">
+                            <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                        </label>
+                    </td>
             <td class="px-4 py-4 whitespace-normal">
                 <div class="flex items-center">
                     <button class="bg-green-700 text-white px-2 py-1.5 rounded flex items-center">
@@ -202,7 +190,7 @@ Berita
     // Next and Last buttons
     pagination.appendChild(createPageButton('❯', Math.min(totalPages, currentPage + 1), false));
     pagination.appendChild(createPageButton('❯❯', totalPages, false));
-}
+    }
 
     $(document).ready(function() {
         $('#rowsPerPage').on('change', (event) => {
