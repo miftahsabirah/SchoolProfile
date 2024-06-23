@@ -8,6 +8,7 @@ use App\Http\Resources\JabatanResource;
 use App\Models\GuruKaryawan;
 use App\Models\Jabatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Js;
 
 class GuruKaryawanController extends Controller
@@ -18,6 +19,17 @@ class GuruKaryawanController extends Controller
         $guru = GuruKaryawan::with('jabatan')->get();
 
         return response()->json($guru);
+    }
+
+    public function indexdetailguru($id){
+        $detailguru = GuruKaryawan::find($id);
+
+        if($detailguru){
+            return response()->json($detailguru);
+
+        }else{
+            return response()->json(null);
+        }
     }
     public function postguru(Request $request)
     {
@@ -38,10 +50,8 @@ class GuruKaryawanController extends Controller
             $getfileExtension = $request->file('foto')->getClientOriginalExtension();
             $createnewFileName = time() . '_' . str_replace(' ', '_', $getfilenamewitoutext) . '.' . $getfileExtension;
             $img_path = $request->file('foto')->storeAs('public/post_guru_karyawan', $createnewFileName);
-
-            // Update the gurukaryawanpost object with the new filename
             $gurukaryawanpost->foto = $createnewFileName;
-            $gurukaryawanpost->save(); // Save the updated object
+            $gurukaryawanpost->save();
         }
 
         if ($gurukaryawanpost) {
@@ -66,12 +76,28 @@ class GuruKaryawanController extends Controller
                 'nip' => 'required',
                 'nomor_telepon' => 'required',
                 'jenis_guru' => 'required',
+                'foto' => 'required|image|mimetypes:image/jpeg,image/jpg,image/png|max:2048',
             ]);
             $gurukaryawanupdate->jabatan_id = $validatedata['jabatan_id'];
             $gurukaryawanupdate->nama_guru = $validatedata['nama_guru'];
             $gurukaryawanupdate->nip = $validatedata['nip'];
             $gurukaryawanupdate->nomor_telepon = $validatedata['nomor_telepon'];
             $gurukaryawanupdate->jenis_guru = $validatedata['jenis_guru'];
+
+            if ($request->hasFile('foto')) {
+                // Hapus gambar lama jika ada
+                if ($gurukaryawanupdate->foto) {
+                    Storage::delete('public/post_guru_karyawan/' . $gurukaryawanupdate->foto);
+                }
+
+                $filename = $request->file('foto')->getClientOriginalName();
+                $getfilenamewitoutext = pathinfo($filename, PATHINFO_FILENAME);
+                $getfileExtension = $request->file('foto')->getClientOriginalExtension();
+                $createnewFileName = time() . '_' . str_replace(' ', '_', $getfilenamewitoutext) . '.' . $getfileExtension;
+                $img_path = $request->file('foto')->storeAs('public/post_guru_karyawan', $createnewFileName);
+                $gurukaryawanupdate->foto = $createnewFileName;
+            }
+
             if ($gurukaryawanupdate->save()) {
                 return response()->json([
                     'Message: ' => 'gurukaryawan updated with success.',
@@ -91,6 +117,9 @@ class GuruKaryawanController extends Controller
     public function deleteguru(string $id)
     {
         $gurukaryawandelete = GuruKaryawan::find($id);
+        if ($gurukaryawandelete->foto) {
+            Storage::delete('public/post_guru_karyawan/' . $gurukaryawandelete->foto);
+        }
         if ($gurukaryawandelete) {
             $gurukaryawandelete->delete();
             return response()->json([
