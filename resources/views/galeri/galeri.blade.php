@@ -45,7 +45,7 @@
     <script>
         function fetchData(filter = '') {
             $.ajax({
-                url: "{!! route('getgaleri') !!}",
+                url: "http://127.0.0.1:8000/api/getgaleri",
                 type: "GET",
                 dataType: "json",
                 success: function(response) {
@@ -56,7 +56,7 @@
                         response.forEach(function(item) {
                             if (item.kategori.toLowerCase() !== 'bagan' && (!filter || item.kategori
                                     .toLowerCase() === filter.toLowerCase() || filter === 'semua')) {
-                                var imgUrl = "{{ asset('storage/post_img') }}/" + item.gambar;
+                                var imgUrl = "http://localhost:8000/storage/post_img/" + item.gambar;
                                 var galeriitem = $('<div class="relative group">' +
                                     '<img class="w-full h-full rounded-lg object-cover" src="' +
                                     imgUrl + '" alt="' + item.judul + '">' +

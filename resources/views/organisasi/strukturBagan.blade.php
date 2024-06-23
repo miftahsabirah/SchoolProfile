@@ -34,7 +34,7 @@
     <script>
         function fetchBagan() {
             $.ajax({
-                url: "{!! route('getgaleri') !!}",
+                url: "http://127.0.0.1:8000/api/profile",
                 type: "GET",
                 dataType: "json",
                 success: function(response) {
@@ -61,7 +61,7 @@
 
         function fetchJabatan() {
             $.ajax({
-                url: "{!! route('getjabatan') !!}",
+                url: "http://127.0.0.1:8000/api/getjabatan",
                 type: "GET",
                 dataType: "json",
                 success: function(response) {

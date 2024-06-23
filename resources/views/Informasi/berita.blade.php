@@ -50,7 +50,7 @@
     <script>
         function fetchData(filter = '') {
             $.ajax({
-                url: "{!! route('getinformasi') !!}",
+                url: "http://127.0.0.1:8000/api/profile",
                 type: "GET",
                 dataType: "json",
                 success: function(response) {

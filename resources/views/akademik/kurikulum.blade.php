@@ -22,7 +22,7 @@
 @section('addScript')
     <script>
         $.ajax({
-            url: "{!! route('getkurikulum') !!}",
+            url: "http://127.0.0.1:8000/api/getkurikulum",
             type: "GET",
             dataType: "json",
             success: function(response) {
@@ -64,7 +64,7 @@
         });
 
         $.ajax({
-            url: "{!! route('profile') !!}",
+            url: "http://127.0.0.1:8000/api/profile",
             type: "GET",
             dataType: "json",
             success: function(response) {
