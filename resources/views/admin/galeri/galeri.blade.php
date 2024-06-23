@@ -7,7 +7,7 @@
 @section('content')
     <div class="bg-gray-100 flex justify-center h-auto">
         <div class="w-full mx-12 shadow-xl rounded-lg flex flex-col">
-            <h2 class="text-sm font-medium px-6 py-3">Setting Guru dan Karyawan</h2>
+            <h2 class="text-sm font-medium px-6 py-3">Setting Galeri</h2>
             <div class="bg-white rounded-br-lg rounded-bl-lg shadow-lg flex-1 overflow-y-auto">
                 <button onclick="window.location.href='{{ route('adminformgaleri') }}'"
                     class="bg-blue-600 text-white text-xs px-4 py-2 rounded-lg m-4 flex items-center">
