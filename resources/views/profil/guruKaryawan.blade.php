@@ -40,7 +40,7 @@
     <script>
         function fetchData(filter = '') {
             $.ajax({
-                url: "{!! route('getguru') !!}",
+                url: "http://127.0.0.1:8000/api/getguru",
                 type: "GET",
                 dataType: "json",
                 success: function(response) {
@@ -49,7 +49,7 @@
                         response.forEach(function(item) {
                             if (!filter || item.jabatan.nama_jabatan.toLowerCase() === filter
                                 .toLowerCase()) {
-                                var imgUrl = "{{ asset('storage/post_guru_karyawan') }}/" + item.foto;
+                                var imgUrl = "http://localhost:8000/storage/post_guru_karyawan/" + item.foto;
                                 html += '<div class="relative h-30 w-30">';
                                 html += '<img class="h-auto w-full" src="' + imgUrl + '" alt="' + item
                                     .nama_guru + '">';
