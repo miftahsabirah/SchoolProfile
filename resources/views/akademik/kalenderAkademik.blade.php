@@ -16,6 +16,9 @@
     @include('header')
 
     <div class="py-8 px-4 mx-auto space-y-12 max-w-screen-xl lg:space-y-20 sm:py-16 lg:px-6" id="akademik">
+    @include('header')
+
+    <div class="py-8 px-4 mx-auto space-y-12 max-w-screen-xl lg:space-y-20 sm:py-16 lg:px-6" id="akademik">
     </div>
 @endsection
 @section('addScript')
@@ -111,7 +114,7 @@
 @section('addScript')
     <script>
         $.ajax({
-            url: "{!! route('getakademik') !!}",
+            url: "http://127.0.0.1:8000/api/getakademik",
             type: "GET",
             dataType: "json",
             success: function(response) {
