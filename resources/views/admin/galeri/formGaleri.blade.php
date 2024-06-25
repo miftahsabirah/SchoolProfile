@@ -39,7 +39,7 @@
                     </div>
 
                     <div>
-                        <button <button onclick="window.location.href='{{ route('admingaleri') }}'"type="submit" 
+                        <button onclick="window.location.href='{{ route('admingaleri') }}'"type="submit" 
                             class="w-full bg-blue-700 text-white p-1.5 rounded-lg hover:bg-blue-800 mb-5">Save
                             changes</button>
                     </div>
@@ -64,7 +64,7 @@
                     success: function(response) {
                         console.log(response.message);
                     },
-                    error: function(xhr, status, error) {
+                    error: function(xhr, status, erxror) {
                         console.log(error);
                     }
                 });

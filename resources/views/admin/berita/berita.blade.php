@@ -9,10 +9,12 @@ Berita
     <div class="w-full mx-12 shadow-xl rounded-lg flex flex-col">
         <h2 class="text-sm font-medium px-6 py-3">Setting Berita</h2>
         <div class="bg-white rounded-br-lg rounded-bl-lg shadow-lg flex-1 overflow-y-auto">
-            <button class="bg-blue-600 text-white text-xs px-4 py-2 rounded-lg m-4 flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 mr-2">
+            <button onclick="window.location.href='{{ route('adminformberita') }}'"
+                class="bg-blue-600 text-white text-xs px-4 py-2 rounded-lg m-4 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-4 h-4 mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>                  
+                </svg>
                 Tambah Berita
             </button>
             <table class="min-w-full divide-y divide-gray-200">
@@ -59,7 +61,7 @@ Berita
 
     function fetchData() {
         $.ajax({
-            url: '{!! route('getinformasi') !!}',
+            url: 'http://127.0.0.1:8000/api/getinformasi',
             type: 'GET',
             dataType: 'json',
             success: function(response) {
@@ -104,7 +106,7 @@ Berita
                     <td class="px-4 py-4 whitespace-normal">${row.isi}</td>
                     <td class="px-4 py-4 whitespace-normal">${formatDate(row.created_at)}</td>
                     <td class="px-4 py-4 whitespace-normal">
-                        <img src="/storage/informasi/${row.gambar}" alt="Foto" class="h-20 w-20 object-cover">
+                        <img src="http://localhost:8000/storage/informasi/${row.gambar}" alt="Foto" class="h-20 w-20 object-cover">
                     </td>
                     <td class="px-4 py-4 whitespace-normal">
                 <label class="flex cursor-pointer">

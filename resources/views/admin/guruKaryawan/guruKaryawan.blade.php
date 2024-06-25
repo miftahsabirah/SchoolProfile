@@ -59,7 +59,7 @@ Guru dan Karyawan
 
         function fetchData() {
             $.ajax({
-                url: '{!! route('getguru') !!}',
+                url: 'http://127.0.0.1:8000/api/getguru',
                 type: 'GET',
                 dataType: 'json',
                 success: function(response) {
@@ -91,10 +91,12 @@ Guru dan Karyawan
                     <tr>
                         <td class="px-4 py-4 whitespace-normal">${row.id}</td>
                         <td class="px-4 py-4 whitespace-normal">
-                            <img src="/storage/post_img/${row.gambar}" alt="Foto" class="h-20 w-20 object-cover">
+                            <img src="http://localhost:8000/storage/post_guru_karyawan/${row.foto}" alt="Foto" class="h-20 w-20 object-cover">
                         </td>
-                        <td class="px-4 py-4 whitespace-normal">${row.judul}</td>
-                        <td class="px-4 py-4 whitespace-normal">${row.kategori}</td>
+                        <td class="px-4 py-4 whitespace-normal">${row.nama_guru}</td>
+                        <td class="px-4 py-4 whitespace-normal">${row.nip}</td>
+                        <td class="px-4 py-4 whitespace-normal">${row.jabatan_id}</td>
+                        <td class="px-4 py-4 whitespace-normal">${row.nomor_telepon}</td>
                         <td class="px-4 py-4 whitespace-normal">
                     <label class="flex cursor-pointer">
                         <input type="checkbox" ${row.aktif ? 'checked' : ''} class="sr-only peer">
