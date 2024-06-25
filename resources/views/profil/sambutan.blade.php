@@ -69,7 +69,7 @@
                 });
 
                 if (kepalasekolah) {
-                    var imgUrl = "{{ asset('storage/post_guru_karyawan') }}/" + kepalasekolah.foto;
+                    var imgUrl = "http://localhost:8000/storage/post_guru_karyawan/" + kepalasekolah.foto;
                     html += '<img class="h-auto max-w-40 lg:w-auto" src="' + imgUrl + '" alt="' + kepalasekolah
                         .nama_guru + '">';
                     html +=

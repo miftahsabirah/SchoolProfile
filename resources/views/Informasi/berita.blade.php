@@ -50,7 +50,7 @@
     <script>
         function fetchData(filter = '') {
             $.ajax({
-                url: "http://127.0.0.1:8000/api/profile",
+                url: "http://127.0.0.1:8000/api/getinformasi",
                 type: "GET",
                 dataType: "json",
                 success: function(response) {
@@ -59,7 +59,10 @@
                         response.forEach(function(item) {
                             if (!filter || item.kategori.toLowerCase() === filter
                                 .toLowerCase()) {
-                                var imgUrl = "{{ asset('storage/informasi') }}/" + item.gambar;
+                                var imgUrl = "http://localhost:8000/storage/informasi/" + item.gambar;
+                                var imgUrl2 = "http://localhost:8000/storage/post_guru_karyawan/" + item
+                                    .gurukaryawan
+                                    .foto;
                                 var createdDate = new Date(item.created_at);
                                 var formattedDate = createdDate.toLocaleDateString('en-US', {
                                     year: 'numeric',
@@ -84,6 +87,11 @@
                                 html += '</a>';
                                 html += '</div>';
                                 html += '<div class="mt-6 flex items-center">';
+                                html += '<img class="h-10 w-10 rounded-full" src="' + imgUrl2 +
+                                    '" alt="Foto Guru/Karyawan">';
+                                html += '<img class="h-10 w-10 rounded-full" src="' + imgUrl2 +
+                                    '" alt="Foto Guru/Karyawan">';
+
                                 html += '<div class="ml-3">';
                                 html +=
                                     '<p class="text-sm font-medium text-gray-900"><a href="#" class="hover:underline">' +
