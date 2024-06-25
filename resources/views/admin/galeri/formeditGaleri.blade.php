@@ -62,18 +62,22 @@
             const urlParams = new URLSearchParams(window.location.search);
             const id = urlParams.get('id');
 
+            // Periksa apakah ID tersedia
+            if (!id) {
+                console.log("ID tidak ditemukan di URL");
+                return;
+            }
+
             // AJAX request untuk mengambil detail data galeri berdasarkan ID
             $.ajax({
-                url: "http://127.0.0.1:8000/api/getdetailgaleri/id=" + id,
+                url: "http://127.0.0.1:8000/api/getdetailgaleri/" + id,
                 type: "GET",
                 dataType: "json",
                 success: function(response) {
                     if (response) {
                         populateForm(response); // Panggil fungsi untuk mengisi formulir
                         // Set form action untuk update
-                        $('#galeriForm').attr('action', 'http://127.0.0.1:8000/api/updategaleri');
-                        // Set method form ke PUT
-                        $('#method').val('PUT');
+                        $('#galeriForm').attr('action', 'http://127.0.0.1:8000/api/updategaleri/' + id);
                     } else {
                         console.log("Data not found.");
                     }
@@ -103,7 +107,7 @@
 
                 $.ajax({
                     url: $(this).attr('action'),
-                    type: $('#method').val(),
+                    type: 'POST', // POST method with _method set to PUT
                     data: formData,
                     processData: false,
                     contentType: false,

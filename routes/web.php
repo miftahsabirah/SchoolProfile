@@ -18,39 +18,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // return view('home');
-
-    return view('admin/berita/berita');
-});
-
 // Route::get('/', function () {
 //     // return view('home');
-//     return view('login');
+
+//     return view('admin/galeri/galeri');
 // });
+
+
 Route::get('/home', function () {
     // return view('home');
     return view('home');
 });
 
-// route::get('/profile/sambutan', [ProfileSekolahController::class,'indekprofielview'])->name('profile.sambutan');
-// route::get('/profile/sejarah', [ProfileSekolahController::class,'indekprofielviewsejarah'])->name('profile.sejarah');
-// route::get('/profile/visimisi', [ProfileSekolahController::class,'indekprofielviewvisimisi'])->name('profile.visimisi');
-// route::get('/profile/akreditasi', [ProfileSekolahController::class,'indekprofielviewakreditasi'])->name('profile.akreditasi');
-// route::get('/profile/guru', [ProfileSekolahController::class,'indekprofielviewguru'])->name('profile.guru');
-
-// Route::get('home', [HomeController::class, 'indexhome'])->name('home');
-
-// Route::get('/akademik/kurikulum', [KurikulumController::class, 'indexviewkurikulum'])->name('akademik.kurikulum');
-// Route::get('/akademik/kalenderakademik', [AkademikController::class, 'indexviewkalender'])->name('akademik.kalenderakademik');
-
-
-// Route::get('/organisasi/dewansekolah', [ViewController::class, 'indexvieworganisasi'])->name('organisasi.dewansekolah');
-// Route::get('/organisasi/bagan', [ViewController::class, 'indexviewstrukturbagan'])->name('organisasi.bagan');
-// Route::get('/organisasi/tugas', [ViewController::class, 'indexviewstrukturtugas'])->name('organisasi.tugas');
-// Route::get('/informasi/berita', [ViewController::class, 'indexviewberita'])->name('informasi.berita');
-// Route::get('/sarpras', [ViewController::class, 'indexviewsarpras'])->name('sarpras');
-// Route::get('/profil/detailAkreditasi/{id}', [ViewController::class, 'indexviewdetailakreditasi'])->name('profil.detailAkreditasi');
 
 // route profile
 Route::get('/profile/sambutan', function () {
@@ -117,6 +96,7 @@ Route::get('/berita', function () {
     return view('informasi/berita');
 })->name('berita');
 
+// admin galeri
 Route::get('/admingaleri', function () {
     return view('admin/galeri/galeri');
 })->name('admingaleri');
@@ -125,6 +105,46 @@ Route::get('/adminformgaleri', function () {
     return view('admin/galeri/formGaleri');
 })->name('adminformgaleri');
 
-Route::get('/adminformeditgaleri', function () {
+Route::get('/adminformeditgaleri/{id}', function () {
     return view('admin/galeri/formeditGaleri');
 })->name('adminformeditgaleri');
+
+// admin berita
+Route::get('/adminberita', function () {
+    return view('admin/berita/berita');
+})->name('adminberita');
+
+Route::get('/adminformberita', function () {
+    return view('admin/berita/formBerita');
+})->name('adminformberita');
+
+// admin sarpras
+Route::get('/adminsarpras', function () {
+    return view('admin/sarpras/sarpras');
+})->name('adminsarpras');
+
+Route::get('/adminformsarpras', function () {
+    return view('admin/sarpras/formSarpras');
+})->name('adminformsarpras');
+
+// admin guruKaryawan
+Route::get('/admingurukaryawan', function () {
+    return view('admin/guruKaryawan/guruKaryawan');
+})->name('admingurukaryawan');
+
+Route::get('/adminformguruKaryawan', function () {
+    return view('admin/guruKaryawan/formguruKaryawan');
+})->name('adminformguruKaryawan');
+
+// admin kalender akademik
+Route::get('/adminkalenderakademik', function () {
+    return view('admin/kalender/kalenderAkademik');
+})->name('adminkalenderakademik');
+
+Route::get('/adminformkalenderakademik', function () {
+    return view('admin/kalender/formKalenderAkademik');
+})->name('adminformkalenderakademik');
+
+// Route::get('/adminformeditgaleri/{id}', function () {
+//     return view('admin/galeri/formeditGaleri');
+// })->name('adminformeditgaleri');
