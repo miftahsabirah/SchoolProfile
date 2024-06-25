@@ -109,6 +109,7 @@ Route::get('/adminformeditgaleri/{id}', function () {
     return view('admin/galeri/formeditGaleri');
 })->name('adminformeditgaleri');
 
+
 // admin berita
 Route::get('/adminberita', function () {
     return view('admin/berita/berita');
@@ -148,3 +149,8 @@ Route::get('/adminformkalenderakademik', function () {
 // Route::get('/adminformeditgaleri/{id}', function () {
 //     return view('admin/galeri/formeditGaleri');
 // })->name('adminformeditgaleri');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+

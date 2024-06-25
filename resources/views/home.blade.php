@@ -83,7 +83,7 @@ Home
 <div class="lg:py-16 py-8">
     <div class="px-4 mx-auto mb-2 max-w-screen-md text-center md:mb-3 lg:px-0">
         <p class="mb-4 text-3xl tracking-tight font-extrabold text-gray-900 md:text-4xl">
-            Prestasi Mahasiswa
+            Prestasi 
         </p>
 
         <div>
@@ -626,4 +626,30 @@ Home
 </div>
 
 @endsection
-
+@section('addScript')
+    <script>
+            $.ajax({
+        url: "http://127.0.0.1:8000/api/profile",
+        type: "GET",
+        dataType: "json",
+        success: function(response) {
+            if (Array.isArray(response)) {
+                var html = '';
+                response.forEach(function(item) {
+                    var imgUrl = "http://localhost:8000/storage/logo_school/" + item.logo_sekolah;
+                    html += '<img class="h-8" src="' + imgUrl + '" />';
+                    html +=
+                        ' <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">' + item
+                        .nama_sekolah + '</span>';
+                });
+                $('#school-2').html(html);
+            } else {
+                console.log("Invalid data format. Expected an array.");
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log("AJAX request error:", error);
+        }
+    });
+    </script>
+@endsection
