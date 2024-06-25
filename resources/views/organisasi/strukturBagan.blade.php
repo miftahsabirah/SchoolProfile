@@ -34,7 +34,7 @@
     <script>
         function fetchBagan() {
             $.ajax({
-                url: "http://127.0.0.1:8000/api/profile",
+                url: "http://127.0.0.1:8000/api/getgaleri",
                 type: "GET",
                 dataType: "json",
                 success: function(response) {
@@ -42,7 +42,7 @@
                         var html = '';
                         response.forEach(function(item) {
                             if (item.kategori === 'bagan') {
-                                var imgUrl = "{{ asset('storage/post_img') }}/" + item.gambar;
+                                var imgUrl = "http://localhost:8000/storage/post_img/" + item.gambar;
                                 html += '<img class="max-w-full h-auto lg:max-w-screen-lg" src="' +
                                     imgUrl +
                                     '" alt="image description">';

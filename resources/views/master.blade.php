@@ -176,11 +176,9 @@
         <div class="mx-auto w-full max-w-screen-xl p-1 py-6 lg:py-8">
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0 max-w-sm">
-                    <a href="https://flowbite.com/" class="flex items-center">
-                        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
-                        <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">SDN Ciren
-                            1</span>
+                    <a href="" class="flex items-center" id="school-2">
                     </a>
+
 
                     <p class="font-regular text-white mt-3 mx-auto">
                         We are an open-source library of over 400+ web
@@ -305,12 +303,6 @@
                         </ul>
                     </div>
                 </div>
-
-                <div class="mb-6 md:mb-0">
-                    <a href="https://flowbite.com/" class="flex items-center">
-                        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 me-3" alt="FlowBite Logo" />
-                    </a>
-                </div>
             </div>
             <hr class="my-6 border-white sm:mx-auto lg:my-8" />
             <div class="sm:flex sm:items-center sm:justify-between">
@@ -388,6 +380,29 @@
                         .nama_sekolah + '</span>';
                 });
                 $('#school').html(html);
+            } else {
+                console.log("Invalid data format. Expected an array.");
+            }
+        },
+        error: function(xhr, status, error) {
+            console.log("AJAX request error:", error);
+        }
+    });
+    $.ajax({
+        url: "http://127.0.0.1:8000/api/profile",
+        type: "GET",
+        dataType: "json",
+        success: function(response) {
+            if (Array.isArray(response)) {
+                var html = '';
+                response.forEach(function(item) {
+                    var imgUrl = "http://localhost:8000/storage/logo_school/" + item.logo_sekolah;
+                    html += '<img class="h-8" src="' + imgUrl + '" />';
+                    html +=
+                        ' <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">' + item
+                        .nama_sekolah + '</span>';
+                });
+                $('#school-2').html(html);
             } else {
                 console.log("Invalid data format. Expected an array.");
             }

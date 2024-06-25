@@ -128,3 +128,7 @@ Route::get('/adminformgaleri', function () {
 Route::get('/adminformeditgaleri', function () {
     return view('admin/galeri/formeditGaleri');
 })->name('adminformeditgaleri');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
