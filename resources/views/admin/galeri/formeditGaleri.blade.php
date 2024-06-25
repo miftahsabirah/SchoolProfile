@@ -13,7 +13,6 @@
                     @csrf
                     <!-- Hidden input field for method -->
                     <input type="hidden" name="_method" id="method" value="PUT">
-                    <!-- Hidden input field for data id (for edit mode) -->
                     <input type="hidden" name="id" id="id">
 
                     <div class="mb-5">
@@ -21,7 +20,7 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Judul</label>
                         <input type="text" id="judul" name="judul"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Masukkan judul" required>
+                            required>
                     </div>
 
                     <div class="mb-5">
@@ -31,7 +30,7 @@
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                             id="gambar" name="gambar" type="file">
                         <!-- Placeholder for current image display if needed -->
-                        <img id="currentImage" src="" alt="Current Image" class="mt-2 max-w-full h-auto"> 
+                        <img id="currentImage" src="" alt="Current Image" class="mt-2 max-w-full h-auto">
                     </div>
 
                     <div class="mb-5">
@@ -46,7 +45,7 @@
                     </div>
 
                     <div>
-                        <button type="submit"
+                        <button onclick="window.location.href='{{ route('admingaleri') }}'"type="submit"
                             class="w-full bg-blue-700 text-white p-1.5 rounded-lg hover:bg-blue-800 mb-5">Save
                             changes</button>
                     </div>
@@ -57,25 +56,26 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function() {
+        document.addEventListener('DOMContentLoaded', function() {
             // Mendapatkan ID dari parameter URL
             const urlParams = new URLSearchParams(window.location.search);
-            const id = urlParams.get('id');
+            var currentUrl = window.location.href;
+            var id = currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
 
+            console.log(currentUrl);
             // Periksa apakah ID tersedia
             if (!id) {
                 console.log("ID tidak ditemukan di URL");
                 return;
             }
 
-            // AJAX request untuk mengambil detail data galeri berdasarkan ID
             $.ajax({
                 url: "http://127.0.0.1:8000/api/getdetailgaleri/" + id,
                 type: "GET",
                 dataType: "json",
                 success: function(response) {
                     if (response) {
-                        populateForm(response); // Panggil fungsi untuk mengisi formulir
+                        populateForm(response);
                         // Set form action untuk update
                         $('#galeriForm').attr('action', 'http://127.0.0.1:8000/api/updategaleri/' + id);
                     } else {
