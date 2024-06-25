@@ -10,47 +10,48 @@ Form Berita
     <div class="w-full shadow-xl rounded-lg">
         <h2 class="text-sm font-medium px-6 py-3">Settings Berita</h2>
         <div class="bg-white p-6 rounded-br-lg rounded-bl-lg shadow-lg w-full">
-            <form>
+            <form id="informasiForm" enctype="multipart/form-data">
+                @csrf
+                {{-- <div class="mb-5">
+                    <label for="users_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">User ID</label>
+                    <input type="text" id="users_id" name="users_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan ID" required />
+                </div> --}}
+
                 <div class="mb-5">
-                    <label for="infoBerita" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tambahkan Info Berita</label>
-                    <textarea id="infoBerita" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Berita terkini yang dapat dilihat..."></textarea>
-                    <div class="text-xs text-gray-500 mt-1">A note for extra info</div>
+                    <label for="guru_karyawan_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID Guru/Karyawan</label>
+                    <input type="text" id="guru_karyawan_id" name="guru_karyawan_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan ID" required />
                 </div>
 
                 <div class="mb-5">
-                    <label for="judulBerita" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tambahkan Judul</label>
-                    <input type="text" id="judulBerita" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan judul" required />
+                    <label for="judul" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tambahkan Judul</label>
+                    <input type="text" id="judul" name="judul" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan judul" required />
                 </div>
                 
                 <div class="mb-5">
-                    <form class="max-w-sm mx-auto">
-                        <label for="kategoriInfo" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori Informasi</label>
-                        <select id="kategoriInfo" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori Informasi</label>
+                        <select id="kategori" name="kategori" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option>Prestasi</option>
                             <option>Kunjungan</option>
                             <option>Berita 3</option>
                             <option>Berita 4</option>
                         </select>
-                    </form>
                 </div>
 
-                <div class="mb-5">
-                    <label for="tanggalBerita" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal</label>
+                {{-- <div class="mb-5">
+                    <label for="created_at" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
                         </svg>
                         </div>
-                        <input datepicker datepicker-buttons datepicker-autoselect-today type="text" id="tanggalBerita" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+                        <input datepicker datepicker-buttons datepicker-autoselect-today type="text" id="created_at" name="created_at" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="mb-5">
-                    <form class="mx-auto">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="fotoBerita">Tambah Foto</label>
-                        <input class="block w-full text-sm text-gray-500 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="fotoBerita" id="fotoBerita" type="file">
-                    </form>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="gambar">Tambah Foto</label>
+                        <input class="block w-full text-sm text-gray-500 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="gambar" id="gambar" name="gambar" type="file">
                 </div>
 
                 <div class="mb-10">
@@ -133,14 +134,16 @@ Form Berita
                             </div>
                         </div>
                         <div class="px-4 py-2 bg-white rounded-b-lg dark:bg-gray-800">
-                            <label for="editor" class="sr-only">Publish post</label>
-                            <textarea id="editor" rows="8" class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Tambahkan deskripsi disini..." required ></textarea>
+                            <label for="isi" class="sr-only">Publish post</label>
+                            <textarea id="isi" name="isi" rows="8" class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Tambahkan deskripsi disini..." required ></textarea>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <button type="submit" class="w-full bg-blue-700 text-white p-1.5 rounded-lg hover:bg-blue-800 mb-5">Save changes</button>
+                    <button onclick="window.location.href='{{ route('adminberita') }}'"type="submit" 
+                        class="w-full bg-blue-700 text-white p-1.5 rounded-lg hover:bg-blue-800 mb-5">Save
+                        changes</button>
                 </div>
             </form>
         </div>
@@ -148,8 +151,32 @@ Form Berita
 </div>
 
 {{-- js buat datepicker --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script> --}}
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#beritaForm').on('submit', function(event) {
+                event.preventDefault();
+                var formData = new FormData(this);
 
+                $.ajax({
+                    url: "http://127.0.0.1:8000/api/postinformasi",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType: "json",
+                    success: function(response) {
+                        console.log(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+    
 
 @endsection

@@ -10,11 +10,46 @@ Form Kalender Akademik
     <div class="w-full shadow-xl rounded-lg">
         <h2 class="text-sm font-medium px-6 py-3">Settings Kalender Akademik</h2>
         <div class="bg-white p-6 rounded-br-lg rounded-bl-lg shadow-lg w-full">
-            <form>
+            <form id="kalenderAkademikForm" enctype="multipart/form-data">
+                @csrf
+                {{-- <div class="mb-5">
+                    <label for="kurikulum_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kurikulum ID</label>
+                    <input type="text" id="kurikulum_id" name="kurikulum_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan judul" required />
+                </div> --}}
+
                 <div class="mb-5">
-                    <label for="jenisKurikulum" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jenis Kurikulum</label>
-                    <input type="text" id="jenisKurikulum" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan judul" required />
+                    <label for="semester" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Semester</label>
+                    <input type="text" id="semester" name="semester" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan judul" required />
                 </div>
+
+                <div class="mb-5">
+                    <label for="tahun_ajaran" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tahun Akademik</label>
+                    <input type="text" id="tahun_ajaran" name="tahun_ajaran" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan judul" required />
+                </div>
+{{-- 
+                <div class="mb-5">
+                    <label for="tanggal_mulai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Mulai</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                        </svg>
+                        </div>
+                        <input datepicker datepicker-buttons datepicker-autoselect-today type="text" id="tanggal_mulai" name="tanggal_mulai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+                    </div>
+                </div>
+
+                <div class="mb-5">
+                    <label for="tanggal_selesai" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tanggal Selesai</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                        </svg>
+                        </div>
+                        <input datepicker datepicker-buttons datepicker-autoselect-today type="text" id="tanggal_selesai" name="tanggal_selesai" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+                    </div>
+                </div> --}}
                 
                 <div class="mb-5">
                     <label class="block text-sm font-medium text-gray-900 mb-2">Tambahkan Deskripsi</label>
@@ -96,17 +131,15 @@ Form Kalender Akademik
                             </div>
                         </div>
                         <div class="px-4 py-2 bg-white rounded-b-lg dark:bg-gray-800">
-                            <label for="editor" class="sr-only">Publish post</label>
-                            <textarea id="editor" rows="8" class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Tambahkan deskripsi disini..." required ></textarea>
+                            <label for="deskripsi" class="sr-only">Publish post</label>
+                            <textarea id="deskripsi" name="deskripsi" rows="8" class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Tambahkan deskripsi disini..." required ></textarea>
                         </div>
                     </div>
                 </div>
 
                 <div class="mb-5">
-                    <form class="mx-auto">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="iconKurikulum">Tambahkan Icon Kalender</label>
-                        <input class="block w-full text-sm text-gray-500 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="iconKurikulum" id="iconKurikulum" type="file">
-                    </form>
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="gambar">Tambahkan Icon Kalender</label>
+                    <input class="block w-full text-sm text-gray-500 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="gambar" id="iconKurikulum" name="gambar" type="file">
                 </div>
 
                 <div class="mb-6">
@@ -118,7 +151,7 @@ Form Kalender Akademik
                                 <img src="img/upload.png" alt="icon Upload" class="mb-2">
                                 <p>Drag files here to upload <br><span class="text-blue-500 underline">or browse for files</span></p>
                             </div>
-                            <input type="file" id="fileInput" class="hidden">
+                            <input type="file" id="file_berkas" name="file_berkas" class="hidden">
                         </div>
 
                         <div id="uploadProgress" class="hidden mt-4">
@@ -155,20 +188,25 @@ Form Kalender Akademik
                 </div>
 
                 <div>
-                    <button type="submit" class="w-full bg-blue-700 text-white p-1.5 rounded-lg hover:bg-blue-800 mb-5">Save changes</button>
+                    <button onclick="window.location.href='{{ route('adminkalenderakademik') }}'"type="submit" 
+                        class="w-full bg-blue-700 text-white p-1.5 rounded-lg hover:bg-blue-800 mb-5">Save
+                        changes</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
+{{-- js buat datepicker --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
+
 {{-- js buat file upload--}}
 <script>
     document.getElementById('fileUploadDropZone').addEventListener('click', function() {
-        document.getElementById('fileInput').click();
+        document.getElementById('file_berkas').click();
     });
 
-    document.getElementById('fileInput').addEventListener('change', function(event) {
+    document.getElementById('file_berkas').addEventListener('change', function(event) {
         const file = event.target.files[0];
         if (file) {
             document.getElementById('fileName').textContent = file.name;
@@ -199,5 +237,30 @@ Form Kalender Akademik
         document.getElementById('progressPercent').textContent = '0%';
     });
 </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#kalenderAkademikForm').on('submit', function(event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+
+                $.ajax({
+                    url: "http://127.0.0.1:8000/api/postakademik",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType: "json",
+                    success: function(response) {
+                        console.log(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
 
 @endsection

@@ -10,17 +10,16 @@ Form Sarana dan Prasarana
     <div class="w-full shadow-xl rounded-lg">
         <h2 class="text-sm font-medium px-6 py-3">Settings Sarana dan Prasarana</h2>
         <div class="bg-white p-6 rounded-br-lg rounded-bl-lg shadow-lg w-full">
-            <form>
+            <form id="sarprasForm" enctype="multipart/form-data">
+                @csrf
                 <div class="mb-5">
-                    <label for="judulSarpras" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tambahkan Judul</label>
-                    <input type="text" id="judulSarpras" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan judul" required />
+                    <label for="nama_sarpras" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tambahkan Judul</label>
+                    <input type="text" id="nama_sarpras" name="nama_sarpras" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan judul" required />
                 </div>
                 
                 <div class="mb-5">
-                    <form class="mx-auto">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="uploadFoto">Tambah Foto</label>
-                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="uploadFoto" type="file" multiple>
-                    </form>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="gambar">Tambah Foto</label>
+                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="gambar" name="gambar" type="file" multiple>
                 </div>
 
                 <div class="mb-10">
@@ -103,18 +102,48 @@ Form Sarana dan Prasarana
                             </div>
                         </div>
                         <div class="px-4 py-2 bg-white rounded-b-lg dark:bg-gray-800">
-                            <label for="editor" class="sr-only">Publish post</label>
-                            <textarea id="editor" rows="8" class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Tambahkan deskripsi disini..." required ></textarea>
+                            <label for="deskripsi" class="sr-only">Publish post</label>
+                            <textarea id="deskripsi" name="deskripsi" rows="8" class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Tambahkan deskripsi disini..." required ></textarea>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <button type="submit" class="w-full bg-blue-700 text-white p-1.5 rounded-lg hover:bg-blue-800 mb-5">Save changes</button>
+                    <button onclick="window.location.href='{{ route('adminsarpras') }}'"type="submit" 
+                        class="w-full bg-blue-700 text-white p-1.5 rounded-lg hover:bg-blue-800 mb-5">Save
+                        changes</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+
+        $('#sarprasForm').on('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(this);
+
+            $.ajax({
+                url: "http://127.0.0.1:8000/api/postsarpras",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function(response) {
+                    console.log(response.message);
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
+
+
 
 @endsection
