@@ -64,7 +64,7 @@
                         // Handle successful login, maybe store the token
                         console.log('Login successful:', data.token);
                         // Redirect to the /berita page
-                        window.location.href = '{{ route('galeri') }}'";
+                        window.location.href = '{{ route('admingaleri') }}'";
                     } else {
                         // Handle login failure
                         console.error('Login failed:', data);

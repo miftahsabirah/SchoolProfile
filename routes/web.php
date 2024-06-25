@@ -49,7 +49,7 @@ Route::get('/profile/akreditasi', function () {
 })->name('profile.akreditasi');
 
 Route::get('/profile/guru', function () {
-    return view('/profile/guru');
+    return view('/profil/guruKaryawan');
 })->name('profile.guru');
 
 // route home
@@ -83,14 +83,14 @@ Route::get('/sarpras', function () {
     return view('/sarpras/sarpras');
 })->name('sarpras');
 
-Route::get('/profil/detailAkreditasi/{id}', function () {
-    return view('/profil/detailAkreditasi/{id}');
-})->name('sarpras');
+Route::get('/sarpras/detailsarpras', function () {
+    return view('/sarpras/detailSarpras');
+})->name('sarpras.detail');
 
 
 Route::get('/galeri', function () {
     return view('galeri/galeri');
-})->name('profil.detailAkreditasi');
+})->name('galeri');
 
 Route::get('/berita', function () {
     return view('informasi/berita');
