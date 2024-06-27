@@ -33,19 +33,19 @@ Route::get('/home', function () {
 
 // route profile
 Route::get('/profile/sambutan', function () {
-    return view('/profile/sambutan');
+    return view('/profil/sambutan');
 })->name('profile.sambutan');
 
 Route::get('/profile/sejarah', function () {
-    return view('/profile/sejarah');
+    return view('/profil/sejarah');
 })->name('profile.sejarah');
 
 Route::get('/profile/visimisi', function () {
-    return view('/profile/visimisi');
+    return view('/profil/visimisi');
 })->name('profile.visimisi');
 
 Route::get('/profile/akreditasi', function () {
-    return view('/profile/akreditasi');
+    return view('/profil/listakreditasi');
 })->name('profile.akreditasi');
 
 Route::get('/profile/guru', function () {
@@ -72,7 +72,7 @@ Route::get('/organisasi/dewansekolah', function () {
 })->name('organisasi.dewansekolah');
 
 Route::get('/organisasi/bagan', function () {
-    return view('/organisasi/bagan');
+    return view('/organisasi/strukturBagan');
 })->name('organisasi.bagan');
 
 Route::get('/organisasi/tugas', function () {
@@ -97,7 +97,7 @@ Route::get('/berita', function () {
 })->name('berita');
 
 // admin galeri
-Route::get('/admingaleri', function () {
+Route::middleware('auth')->get('/admingaleri', function () {
     return view('admin/galeri/galeri');
 })->name('admingaleri');
 

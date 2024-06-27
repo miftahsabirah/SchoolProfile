@@ -42,7 +42,7 @@
                         html += '</h2>';
                         var downloadUrl = "http://localhost:8000/storage/kurikulum/" + item.file_kurikulum;
                         html += '<a href="' + downloadUrl +
-                            '" target="_blank" class="text-white bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-5">';
+                            '" target="_blank" class="text-white bg-gradient-to-r from-orange-600 via-orange-500 to-orange-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-5" id="unduh">';
                         html += 'Unduh File';
                         html +=
                             '<svg class="w-3.5 h-3.5 ml-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 18">';

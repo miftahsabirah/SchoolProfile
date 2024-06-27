@@ -146,7 +146,6 @@
                 }
             },
             error: function(xhr, status, error) {
-                // Handle errors, if any
                 console.log(error);
             }
         });
@@ -169,7 +168,6 @@
                 }
             },
             error: function(xhr, status, error) {
-                // Handle errors, if any
                 console.log(error);
             }
         });
