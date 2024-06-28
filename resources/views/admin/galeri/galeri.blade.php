@@ -116,6 +116,7 @@
                                     </svg>
                                     Edit
                                 </button>
+                                
                                 <button class="bg-red-700 text-white px-2 py-1.5 rounded ml-2 flex items-center delete-btn" data-id="${row.id}">
                                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="16" height="16" viewBox="0,0,256,256">
                                         <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">

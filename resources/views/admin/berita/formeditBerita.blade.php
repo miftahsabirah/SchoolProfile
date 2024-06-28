@@ -12,6 +12,9 @@ Form Berita
         <div class="bg-white p-6 rounded-br-lg rounded-bl-lg shadow-lg w-full">
             <form id="beritaForm" method="POST" enctype="multipart/form-data">
                 @csrf
+                <!-- Hidden input field for method -->
+                <input type="hidden" name="_method" id="method" value="PUT">
+                <input type="hidden" name="id" id="id">
             
                 <div class="mb-5">
                     <label for="guru_karyawan_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID Guru/Karyawan</label>
@@ -39,7 +42,8 @@ Form Berita
                 <div class="mb-5">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="gambar">Tambah Foto</label>
                         <input class="block w-full text-sm text-gray-500 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="gambar" id="gambar" name="gambar" type="file">
-                </div>
+                        <img id="currentImage" src="" alt="Current Image" class="mt-2 max-w-full h-auto">
+                    </div>
 
                 <div class="mb-10">
                     <label class="block text-sm font-medium text-gray-900 mb-2">Tambahkan Deskripsi</label>
@@ -165,36 +169,111 @@ Form Berita
             }
         });
     });
-    $(document).ready(function() {
-        // Event handler untuk saat formulir di-submit
+    // $(document).ready(function() {
+    //     // Event handler untuk saat formulir di-submit
+    //     $('#beritaForm').on('submit', function(event) {
+    //         event.preventDefault(); // Mencegah perilaku default submit formulir
+            
+    //         // Mengambil nilai yang dipilih dari dropdown
+    //         var formData = new FormData(this);
+    //         formData.append('users_id', 1);
+            
+    //         console.log(formData);
+            
+    //         $.ajax({
+    //             url: "http://127.0.0.1:8000/api/postinformasi",
+    //             type: "POST",
+    //             data: formData,
+    //             processData: false,
+    //             contentType: false,
+    //             dataType: "json",
+    //             success: function(response) {
+    //                 console.log('Data berhasil disimpan:', response);
+    //                 // Tambahkan logika atau tindakan lain setelah berhasil disimpan
+    //             },
+    //             error: function(xhr, status, error) {
+    //                 console.error('Gagal menyimpan data:', error, status, xhr);
+    //                 // Tambahkan logika penanganan kesalahan
+    //             }
+    //         });
+    //     });
+    // });
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mendapatkan ID dari parameter URL
+        const urlParams = new URLSearchParams(window.location.search);
+        var currentUrl = window.location.href;
+        var id = currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
+
+        console.log(currentUrl);
+        // Periksa apakah ID tersedia
+        if (!id) {
+            console.log("ID tidak ditemukan di URL");
+            return;
+        }
+
+        $.ajax({
+            url: "http://127.0.0.1:8000/api/getdetailinformasi/" + id,
+            type: "GET",
+            dataType: "json",
+            success: function(response) {
+                if (response) {
+                    populateForm(response);
+                    // Set form action untuk update
+                    $('#beritaForm').attr('action', 'http://127.0.0.1:8000/api/updateinformasi/' + id);
+                } else {
+                    console.log("Data not found.");
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+            }
+        });
+
+        // Function untuk mengisi formulir dengan data
+        function populateForm(data) {
+            $('#id').val(data.id);
+            $('#guru_karyawan_id').val(data.guru_karyawan_id);
+            $('#judul').val(data.judul);
+            $('#isi').val(data.isi);
+            $('#kategori').val(data.kategori);
+
+            // Tambahkan logika untuk menampilkan gambar saat ini (jika ada)
+            if (data.gambar) {
+                // Contoh menampilkan gambar dalam elemen img dengan id currentImage
+                $('#currentImage').attr('src', 'http://localhost:8000/storage/informasi/' + data.gambar);
+            }
+        }
+
+        // Handle form submission
         $('#beritaForm').on('submit', function(event) {
-            event.preventDefault(); // Mencegah perilaku default submit formulir
-            
-            // Mengambil nilai yang dipilih dari dropdown
+            event.preventDefault();
             var formData = new FormData(this);
-            formData.append('users_id', 1);
-            
-            console.log(formData);
-            // var guruKaryawanId = $('#guru_karyawan_id').val();
-    
-            // // Memastikan guru_karyawan_id disertakan dalam FormData
-            // formData.append('guru_karyawan_id', guruKaryawanId);
-    
-            // Mengirim data ke backend menggunakan AJAX
+
+            // Tambahkan _method untuk spoofing PUT request
+            formData.append('_method', 'PUT');
+
+            // Tambahkan CSRF token
+            var csrfToken = $('meta[name="csrf-token"]').attr('content');
+            formData.append('_token', csrfToken);
+
             $.ajax({
-                url: "http://127.0.0.1:8000/api/postinformasi",
-                type: "POST",
+                url: $(this).attr('action'),
+                type: 'POST', // POST method with _method set to PUT
                 data: formData,
                 processData: false,
                 contentType: false,
                 dataType: "json",
                 success: function(response) {
-                    console.log('Data berhasil disimpan:', response);
-                    // Tambahkan logika atau tindakan lain setelah berhasil disimpan
+                    console.log(response.message);
+                    // Optionally redirect or show success message
                 },
                 error: function(xhr, status, error) {
-                    console.error('Gagal menyimpan data:', error, status, xhr);
-                    // Tambahkan logika penanganan kesalahan
+                    console.log(error);
+                    // Handle errors
                 }
             });
         });

@@ -21,10 +21,10 @@
                         Datang di Website Company Profile Sekolah</h1>
                     <div class="mb-6">
                         <label for="username"
-                            class="block sm:mb-1 lg::mb-2 text-lg font-bold text-gray-900 dark:text-white">Username</label>
+                            class="block sm:mb-1 lg::mb-2 text-lg font-bold text-gray-900 dark:text-white">Email</label>
                         <input type="text" id="username" name="username"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Username" required>
+                            placeholder="Email" required>
                     </div>
                     <div class="mb-6">
                         <label for="password"

@@ -33,19 +33,19 @@ Route::get('/home', function () {
 
 // route profile
 Route::get('/profile/sambutan', function () {
-    return view('/profile/sambutan');
+    return view('/profil/sambutan');
 })->name('profile.sambutan');
 
 Route::get('/profile/sejarah', function () {
-    return view('/profile/sejarah');
+    return view('/profil/sejarah');
 })->name('profile.sejarah');
 
 Route::get('/profile/visimisi', function () {
-    return view('/profile/visimisi');
+    return view('/profil/visimisi');
 })->name('profile.visimisi');
 
 Route::get('/profile/akreditasi', function () {
-    return view('/profile/akreditasi');
+    return view('/profil/listAkreditasi');
 })->name('profile.akreditasi');
 
 Route::get('/profile/guru', function () {
@@ -119,6 +119,10 @@ Route::get('/adminformberita', function () {
     return view('admin/berita/formBerita');
 })->name('adminformberita');
 
+Route::get('/adminformeditberita/{id}', function () {
+    return view('admin/berita/formeditBerita');
+})->name('adminformeditberita');
+
 // admin sarpras
 Route::get('/adminsarpras', function () {
     return view('admin/sarpras/sarpras');
@@ -128,14 +132,22 @@ Route::get('/adminformsarpras', function () {
     return view('admin/sarpras/formSarpras');
 })->name('adminformsarpras');
 
+Route::get('/adminformeditsarpras/{id}', function () {
+    return view('admin/sarpras/formeditSarpras');
+})->name('adminformeditsarpras');
+
 // admin guruKaryawan
 Route::get('/admingurukaryawan', function () {
     return view('admin/guruKaryawan/guruKaryawan');
 })->name('admingurukaryawan');
 
-Route::get('/adminformguruKaryawan', function () {
-    return view('admin/guruKaryawan/formguruKaryawan');
-})->name('adminformguruKaryawan');
+Route::get('/adminformgurukaryawan', function () {
+    return view('admin/guruKaryawan/formGuruKaryawan');
+})->name('adminformgurukaryawan');
+
+Route::get('/adminformeditgurukaryawan/{id}', function () {
+    return view('admin/guruKaryawan/formeditGuruKaryawan');
+})->name('adminformeditgurukaryawan');
 
 // admin kalender akademik
 Route::get('/adminkalenderakademik', function () {
@@ -146,11 +158,44 @@ Route::get('/adminformkalenderakademik', function () {
     return view('admin/kalender/formKalenderAkademik');
 })->name('adminformkalenderakademik');
 
-// Route::get('/adminformeditgaleri/{id}', function () {
-//     return view('admin/galeri/formeditGaleri');
-// })->name('adminformeditgaleri');
+Route::get('/adminformeditkalenderakademik/{id}', function () {
+    return view('admin/kalender/formeditKalenderAkademik');
+})->name('adminformeditkalenderakademik');
+
+
+Route::get('/adminlanding', function () {
+    return view('admin/landing');
+})->name('adminlanding');
+
 
 Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+Route::get('/adminstruktur', function () {
+    return view('admin/formStrukturOrganisasi');
+})->name('adminstruktur');
+
+Route::get('/admindewansekolah', function () {
+    return view('admin/dewanSekolah');
+})->name('admindewansekolah');
+
+Route::get('/adminkurikulum', function () {
+    return view('admin/formKurikulum');
+})->name('adminkurikulum');
+
+Route::get('/adminsejarah', function () {
+    return view('admin/formSejarah');
+})->name('adminsejarah');
+
+Route::get('/adminsejarah', function () {
+    return view('admin/formVisiMisi');
+})->name('adminsejarah');
+
+Route::get('/adminsambutan', function () {
+    return view('admin/sambutan');
+})->name('adminsambutan');
+
+Route::get('/admin', function () {
+    return view('admin/landing');
+})->name('admin');
