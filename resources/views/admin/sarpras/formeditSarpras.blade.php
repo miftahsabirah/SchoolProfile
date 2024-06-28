@@ -1,48 +1,34 @@
 @extends('admin/master')
 
 @section('title')
-Form Berita
+Form Sarana dan Prasarana
 @endsection
 
 @section('content')
 
 <div class="flex items-center justify-center px-12">
     <div class="w-full shadow-xl rounded-lg">
-        <h2 class="text-sm font-medium px-6 py-3">Settings Berita</h2>
+        <h2 class="text-sm font-medium px-6 py-3">Settings Sarana dan Prasarana</h2>
         <div class="bg-white p-6 rounded-br-lg rounded-bl-lg shadow-lg w-full">
-            <form id="beritaForm" method="POST" enctype="multipart/form-data">
+            <form id="sarprasForm" enctype="multipart/form-data">
                 @csrf
-            
-                <div class="mb-5">
-                    <label for="guru_karyawan_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">ID Guru/Karyawan</label>
-                    <select id="guru_karyawan_id" name="guru_karyawan_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
-                        <option value="">Pilih ID Guru/Karyawan</option>
-                        <!-- Options will be dynamically populated -->
-                    </select>
-                </div>
+                <!-- Hidden input field for method -->
+                <input type="hidden" name="_method" id="method" value="PUT">
+                <input type="hidden" name="id" id="id">
 
                 <div class="mb-5">
-                    <label for="judul" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tambahkan Judul</label>
-                    <input type="text" id="judul" name="judul" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan judul" required />
+                    <label for="nama_sarpras" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tambahkan Judul</label>
+                    <input type="text" id="nama_sarpras" name="nama_sarpras" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukkan judul" required />
                 </div>
                 
                 <div class="mb-5">
-                        <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori Informasi</label>
-                        <select id="kategori" name="kategori" class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            <option>Prestasi</option>
-                            <option>Kunjungan</option>
-                            <option>Berita 3</option>
-                            <option>Berita 4</option>
-                        </select>
-                </div>
-
-                <div class="mb-5">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="gambar">Tambah Foto</label>
-                        <input class="block w-full text-sm text-gray-500 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="gambar" id="gambar" name="gambar" type="file">
+                        <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="gambar" name="gambar" type="file" multiple>
+                        <img id="currentImage" src="" alt="Current Image" class="mt-2 max-w-full h-auto">
                 </div>
 
                 <div class="mb-10">
-                    <label class="block text-sm font-medium text-gray-900 mb-2">Tambahkan Deskripsi</label>
+                    <label class="block text-sm font-medium text-gray-900 mb-2">Deskripsi</label>
                     <div class="w-full border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
                         <div class="flex items-center justify-between px-3 py-2 border-b dark:border-gray-600">
                             <div class="flex flex-wrap items-center divide-gray-200 sm:divide-x sm:rtl:divide-x-reverse dark:divide-gray-600">
@@ -121,84 +107,93 @@ Form Berita
                             </div>
                         </div>
                         <div class="px-4 py-2 bg-white rounded-b-lg dark:bg-gray-800">
-                            <label for="isi" class="sr-only">Publish post</label>
-                            <textarea id="isi" name="isi" rows="8" class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Tambahkan deskripsi disini..." required ></textarea>
+                            <label for="deskripsi" class="sr-only">Publish post</label>
+                            <textarea id="deskripsi" name="deskripsi" rows="8" class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Tambahkan deskripsi disini..." required ></textarea>
                         </div>
                     </div>
                 </div>
 
                 <div>
-                    <button onclick="window.location.href='{{ route('adminberita') }}'"type="submit" 
-                            class="w-full bg-blue-700 text-white p-1.5 rounded-lg hover:bg-blue-800 mb-5">Save
-                            changes
-                        </button>
+                    <button onclick="window.location.href='{{ route('adminsarpras') }}'"type="submit" 
+                        class="w-full bg-blue-700 text-white p-1.5 rounded-lg hover:bg-blue-800 mb-5">Save
+                        changes</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        // Mengambil data guru/karyawan dari backend via AJAX
-        $.ajax({
-            url: 'http://127.0.0.1:8000/api/getguru',
-            method: 'GET',
-            dataType: 'json',
-            success: function(response) {
-                console.log(response); 
-                // Mengisi dropdown dengan opsi dari respons
-                if (response && response.length > 0) {
-                    var dropdown = $('#guru_karyawan_id');
-                    dropdown.empty();
-                    dropdown.append('<option value="">Pilih ID Guru/Karyawan</option>');
-                    $.each(response, function(key, guru) {
-                        dropdown.append($('<option></option>').attr('value', guru.id).text(guru.nama_guru));
-                    });
-                } else {
-                    $('#guru_karyawan_id').append('<option value="">Data tidak tersedia</option>');
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('Terjadi kesalahan dalam mengambil data guru/karyawan:', error);
-                $('#guru_karyawan_id').append('<option value="">Data tidak tersedia</option>');
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mendapatkan ID dari parameter URL
+            const urlParams = new URLSearchParams(window.location.search);
+            var currentUrl = window.location.href;
+            var id = currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
+
+            console.log(currentUrl);
+            // Periksa apakah ID tersedia
+            if (!id) {
+                console.log("ID tidak ditemukan di URL");
+                return;
             }
-        });
-    });
-    $(document).ready(function() {
-        // Event handler untuk saat formulir di-submit
-        $('#beritaForm').on('submit', function(event) {
-            event.preventDefault(); // Mencegah perilaku default submit formulir
-            
-            // Mengambil nilai yang dipilih dari dropdown
-            var formData = new FormData(this);
-            formData.append('users_id', 1);
-            
-            console.log(formData);
-            // var guruKaryawanId = $('#guru_karyawan_id').val();
-    
-            // // Memastikan guru_karyawan_id disertakan dalam FormData
-            // formData.append('guru_karyawan_id', guruKaryawanId);
-    
-            // Mengirim data ke backend menggunakan AJAX
+
             $.ajax({
-                url: "http://127.0.0.1:8000/api/postinformasi",
-                type: "POST",
-                data: formData,
-                processData: false,
-                contentType: false,
+                url: "http://127.0.0.1:8000/api/getdetailsarpras/" + id,
+                type: "GET",
                 dataType: "json",
                 success: function(response) {
-                    console.log('Data berhasil disimpan:', response);
-                    // Tambahkan logika atau tindakan lain setelah berhasil disimpan
+                    if (response) {
+                        populateForm(response);
+                        // Set form action untuk update
+                        $('#sarprasForm').attr('action', 'http://127.0.0.1:8000/api/updatesarpras/' + id);
+                    } else {
+                        console.log("Data not found.");
+                    }
                 },
                 error: function(xhr, status, error) {
-                    console.error('Gagal menyimpan data:', error, status, xhr);
-                    // Tambahkan logika penanganan kesalahan
+                    console.log(error);
                 }
             });
+
+            // Function untuk mengisi formulir dengan data
+            function populateForm(data) {
+                $('#id').val(data.id);
+                $('#nama_sarpras').val(data.nama_sarpras);
+                $('#deskripsi').val(data.deskripsi);
+
+                // Tambahkan logika untuk menampilkan gambar saat ini (jika ada)
+                if (data.gambar) {
+                    // Contoh menampilkan gambar dalam elemen img dengan id currentImage
+                    $('#currentImage').attr('src', 'http://localhost:8000/storage/post_img/' + data.gambar);
+                }
+            }
+
+            // Handle form submission
+            $('#sarprasForm').on('submit', function(event) {
+                event.preventDefault();
+                var formData = new FormData(this);
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST', // POST method with _method set to PUT
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType: "json",
+                    success: function(response) {
+                        console.log(response.message);
+                        // Optionally redirect or show success message
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                        // Handle errors
+                    }
+                });
+            });
         });
-    });
-</script>
+    </script>
+
 
 @endsection
