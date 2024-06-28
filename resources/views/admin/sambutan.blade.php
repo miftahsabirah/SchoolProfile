@@ -7,8 +7,8 @@ Sambutan
 
 @section('content')
 {{-- test --}}
-<div class="bg-gray-100 flex justify-center h-screen">
-    <div class="w-full max-w-4xl shadow-xl rounded-lg">
+<div class="bg-gray-100 flex justify-center min-h-screen">
+    <div class="w-full px-12 shadow-xl rounded-lg">
         <h2 class="text-sm font-medium px-6 py-3">Setting Sambutan</h2>
         <div class="bg-white p-6 rounded-br-lg rounded-bl-lg shadow-lg w-full h-screen">
             <form>
