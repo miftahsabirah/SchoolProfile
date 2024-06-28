@@ -39,6 +39,10 @@
 @section('addScript')
     <script>
         function fetchData(filter = '') {
+            $(document).on('click', '.detail-btn', function() {
+                const id = $(this).attr('data-id');
+                window.location.href = `{{ url('profile/detailguru') }}/${id}`;
+            });
             $.ajax({
                 url: "http://127.0.0.1:8000/api/getguru",
                 type: "GET",
@@ -50,7 +54,7 @@
                             if (!filter || item.jabatan.nama_jabatan.toLowerCase() === filter
                                 .toLowerCase()) {
                                 var imgUrl = "http://localhost:8000/storage/post_guru_karyawan/" + item.foto;
-                                html += '<div class="relative h-30 w-30">';
+                                html += `<div class="relative h-30 w-30 detail-btn" data-id="${item.id}">`;
                                 html += '<img class="h-auto w-full" src="' + imgUrl + '" alt="' + item
                                     .nama_guru + '">';
                                 html +=

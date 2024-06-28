@@ -44,6 +44,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function fetchData(filter = '') {
+            $(document).on('click', '.detail-btn', function() {
+                const id = $(this).attr('data-id');
+                window.location.href = `{{ url('/galeri/detailGaleri') }}/${id}`;
+            });
             $.ajax({
                 url: "http://127.0.0.1:8000/api/getgaleri",
                 type: "GET",
@@ -57,7 +61,7 @@
                             if (item.kategori.toLowerCase() !== 'bagan' && (!filter || item.kategori
                                     .toLowerCase() === filter.toLowerCase() || filter === 'semua')) {
                                 var imgUrl = "http://localhost:8000/storage/post_img/" + item.gambar;
-                                var galeriitem = $('<div class="relative group">' +
+                                var galeriitem = $(`<div class="relative group detail-btn"' data-id="${item.id}"'>` +
                                     '<img class="w-full h-full rounded-lg object-cover" src="' +
                                     imgUrl + '" alt="' + item.judul + '">' +
                                     '<div class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-blue-950 bg-opacity-70 opacity-0 group-hover:opacity-100 transition duration-300 z-10 rounded-lg">' +

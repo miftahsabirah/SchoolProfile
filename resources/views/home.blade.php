@@ -396,7 +396,7 @@
                 <p class="mb-2 text-xl font-bold text-white">Email us:</p>
                 <p class="mb-3 text-white">Email us for general queries, including marketing and partnership opportunities.
                 </p>
-                <a href="mailto:abc@example.com" class="font-semibold text-white hover:underline">hello@flowbite.com</a>
+                <a href="mailto:abc@example.com" class="font-semibold text-white hover:underline" id="email"></a>
             </div>
             <div>
                 <div
@@ -427,7 +427,7 @@
                 </div>
                 <p class="mb-2 text-xl font-bold text-white">Call us:</p>
                 <p class="mb-3 text-white">Call us to speak to a member of our team. We are always happy to help.</p>
-                <span class="font-semibold text-white">+1 (646) 786-5060</span>
+                <span class="font-semibold text-white" id="no_tlpn"></span>
             </div>
 
         </div>
@@ -450,6 +450,8 @@
                             item.nama_sekolah + '</span>';
                         $('#name-instansi').text(item.nama_sekolah);
                         $('#sejarah-instansi').text(item.deskripsi_sejarah);
+                        $('#email').text(item.email);
+                        $('#no_tlpn').text(item.nomor_telepon);
                     });
                     $('#school-2').html(html);
                 } else {

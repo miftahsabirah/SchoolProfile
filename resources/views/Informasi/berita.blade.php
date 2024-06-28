@@ -34,7 +34,7 @@
     <div class="mx-auto max-w-screen-xl my-px mt-3">
         <div id="animation-carousel" class="relative px-16 sm:px-24" data-carousel="slide">
             <div class="overflow-hidden relative h-auto rounded-lg">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-6" id="informasi_">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-6 " id="informasi_">
                 </div>
             </div>
         </div>
@@ -43,6 +43,10 @@
 @section('addScript')
     <script>
         function fetchData(filter = '') {
+            $(document).on('click', '.detail-btn', function() {
+                const id = $(this).attr('data-id');
+                window.location.href = `{{ url('berita/detailberita') }}/${id}`;
+            });
             $.ajax({
                 url: "http://127.0.0.1:8000/api/getinformasi",
                 type: "GET",
@@ -63,8 +67,8 @@
                                     month: 'long',
                                     day: 'numeric'
                                 });
-                                html+= '<div class="block w-full h-full rounded-lg "id="informasi_">';
-                                html += '<div class="flex flex-col overflow-hidden rounded-lg shadow-lg" id="informasi_">';
+                                html+= `<div class="block w-full h-full rounded-lg detail-btn" data-id="${item.id}">`;
+                                html += '<div class="flex flex-col overflow-hidden rounded-lg shadow-lg" >';
                                 html += '<div class="flex-shrink-0">';
                                 html += '<img class="h-48 w-full object-cover" src="' + imgUrl +
                                     '" alt="">';

@@ -48,9 +48,17 @@ Route::get('/profile/akreditasi', function () {
     return view('/profil/listakreditasi');
 })->name('profile.akreditasi');
 
+Route::get('/profile/detailakreditasi/{id}', function () {
+    return view('/profil/detailAkreditasi');
+})->name('profile.detailakreditasi');
+
 Route::get('/profile/guru', function () {
     return view('/profil/guruKaryawan');
 })->name('profile.guru');
+
+Route::get('/profile/detailguru/{id}', function () {
+    return view('/profil/detailGuru');
+})->name('profile.detailguru');
 
 // route home
 Route::get('/home', function () {
@@ -83,7 +91,7 @@ Route::get('/sarpras', function () {
     return view('/sarpras/sarpras');
 })->name('sarpras');
 
-Route::get('/sarpras/detailsarpras', function () {
+Route::get('/sarpras/detailsarpras/{id}', function () {
     return view('/sarpras/detailSarpras');
 })->name('sarpras.detail');
 
@@ -92,9 +100,16 @@ Route::get('/galeri', function () {
     return view('galeri/galeri');
 })->name('galeri');
 
+Route::get('/galeri/detailGaleri/{id}', function () {
+    return view('galeri/detailGaleri');
+})->name('galeri.detail');
+
 Route::get('/berita', function () {
     return view('informasi/berita');
 })->name('berita');
+Route::get('/berita/detailberita/{id}', function () {
+    return view('informasi/detailBerita');
+})->name('berita.detailberita');
 
 // admin galeri
 Route::middleware('auth')->get('/admingaleri', function () {
