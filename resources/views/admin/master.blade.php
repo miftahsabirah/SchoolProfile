@@ -55,7 +55,7 @@
                                 </form>
                             </li>
                             <li>
-                                <a href="./index.html"
+                                <a href="{{ route('admin') }}"
                                     class="flex items-center p-2 text-sm font-normal text-white rounded-lg hover:text-gray-900 group transition duration-75 group hover:bg-gray-100">
                                     <svg class="w-5 h-5 text-white transition duration-75 group-hover:text-gray-900"
                                         fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -76,7 +76,7 @@
                                             clip-rule="evenodd"></path>
                                     </svg>
                                     <span class="flex-1 ml-3 text-left whitespace-nowrap"
-                                        sidebar-toggle-item>Pages</span>
+                                        sidebar-toggle-item>Profil</span>
                                     <svg sidebar-toggle-item class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
@@ -86,27 +86,25 @@
                                 </button>
                                 <ul id="dropdown-pages" class="hidden py-2 space-y-2">
                                     <li>
-                                        <a href="#"
-                                            class="flex items-center p-2 pl-11 text-sm font-normal text-white rounded-lg hover:text-gray-900 transition duration-75 group hover:bg-gray-100">Pricing</a>
+                                        <a href="{{ route('adminsambutan') }}"
+                                            class="flex items-center p-2 pl-11 text-sm font-normal text-white rounded-lg hover:text-gray-900 transition duration-75 group hover:bg-gray-100">Sambutan</a>
                                     </li>
                                     <li>
-                                        <a href="#"
-                                            class="flex items-center p-2 pl-11 text-sm font-normal text-white rounded-lg hover:text-gray-900 transition duration-75 group hover:bg-gray-100">Maintenance</a>
+                                        <a href="{{ route('adminvisimisi') }}"
+                                            class="flex items-center p-2 pl-11 text-sm font-normal text-white rounded-lg hover:text-gray-900 transition duration-75 group hover:bg-gray-100">Visi Misi</a>
                                     </li>
                                     <li>
-                                        <a href="#"
-                                            class="flex items-center p-2 pl-11 text-sm font-normal text-white rounded-lg hover:text-gray-900 transition duration-75 group hover:bg-gray-100">404
-                                            not found</a>
+                                        <a href="{{ route('adminsejarah') }}"
+                                            class="flex items-center p-2 pl-11 text-sm font-normal text-white rounded-lg hover:text-gray-900 transition duration-75 group hover:bg-gray-100">Sejarah</a>
                                     </li>
                                     <li>
-                                        <a href="#"
-                                            class="flex items-center p-2 pl-11 text-sm font-normal text-white rounded-lg hover:text-gray-900 transition duration-75 group hover:bg-gray-100">500
-                                            server error</a>
+                                        <a href="{{ route('admingurukaryawan') }}"
+                                            class="flex items-center p-2 pl-11 text-sm font-normal text-white rounded-lg hover:text-gray-900 transition duration-75 group hover:bg-gray-100">Guru dan Karyawan</a>
                                     </li>
                                 </ul>
                             </li>
-                            <li>
-                                <a href="./index.html"
+                            {{-- <li>
+                                <a href="#"
                                     class="flex items-center p-2 text-sm font-normal text-white rounded-lg hover:text-gray-900 group transition duration-75 group hover:bg-gray-100">
                                     <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-gray-900"
                                         fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -119,10 +117,10 @@
                                     </svg>
                                     <span class="flex-1 ml-3 whitespace-nowrap" sidebar-toggle-item>Organisasi</span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li>
-                                <a href="./mailing/inbox.html"
-                                    class="flex items-center p-2 text-sm font-normal text-white rounded-lg hover:text-gray-900 hover:bg-gray-100 group">
+                                <a href="{{ route('adminkalenderakademik') }}"
+                                    class="flex items-center p-2 text-sm font-normal text-white rounded-lg hover:text-gray-900 group transition duration-75 group hover:bg-gray-100">
                                     <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-gray-900"
                                         fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -136,8 +134,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="./mailing/inbox.html"
-                                    class="flex items-center p-2 text-sm font-normal text-white rounded-lg hover:bg-gray-100 group">
+                                <a href="{{ route('adminsarpras') }}"
+                                    class="flex items-center p-2 text-sm font-normal text-white rounded-lg hover:text-gray-900 group transition duration-75 group hover:bg-gray-100">
                                     <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-gray-900"
                                         fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -152,8 +150,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="./mailing/inbox.html"
-                                    class="flex items-center p-2 text-sm font-normal text-white rounded-lg hover:bg-gray-100 group">
+                                <a href="{{ route('adminberita') }}"
+                                    class="flex items-center p-2 text-sm font-normal text-white rounded-lg hover:text-gray-900 group transition duration-75 group hover:bg-gray-100">
                                     <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-gray-900"
                                         fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -167,8 +165,8 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="./mailing/inbox.html"
-                                    class="flex items-center p-2 text-sm font-normal text-white rounded-lg hover:bg-gray-100 group">
+                                <a href="{{ route('admingaleri') }}"
+                                    class="flex items-center p-2 text-sm font-normal text-white rounded-lg hover:text-gray-900 group transition duration-75 group hover:bg-gray-100">
                                     <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-gray-900"
                                         fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -184,8 +182,8 @@
                         </ul>
 
                         <div class="pt-2 space-y-2">
-                            <a href="https://flowbite.com/docs/components/alerts/" target="_blank"
-                                class="flex items-center p-2 text-sm font-normal text-white rounded-lg transition duration-75 hover:bg-gray-100 group">
+                            {{-- <a href="https://flowbite.com/docs/components/alerts/" target="_blank"
+                                class="flex items-center p-2 text-sm font-normal text-white rounded-lg transition duration-75 hover:text-gray-900 group  group hover:bg-gray-100">
                                 <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-gray-900"
                                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -193,9 +191,9 @@
                                     </path>
                                 </svg>
                                 <span class="ml-3" sidebar-toggle-item>Appereance</span>
-                            </a>
-                            <a href="https://github.com/themesberg/flowbite/issues" target="_blank"
-                                class="flex items-center p-2 text-sm font-normal text-white rounded-lg transition duration-75 hover:bg-gray-100 group">
+                            </a> --}}
+                            {{-- <a href="https://github.com/themesberg/flowbite/issues" target="_blank"
+                                class="flex items-center p-2 text-sm font-normal text-white rounded-lg transition duration-75 hover:text-gray-900 group group hover:bg-gray-100">
                                 <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-gray-900"
                                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -203,9 +201,9 @@
                                         clip-rule="evenodd"></path>
                                 </svg>
                                 <span class="ml-3" sidebar-toggle-item>Pengaturan</span>
-                            </a>
-                            <a href="https://github.com/themesberg/flowbite/issues" target="_blank"
-                                class="flex items-center p-2 text-sm font-normal text-white rounded-lg transition duration-75 hover:bg-gray-100 group">
+                            </a> --}}
+                            <a href="#" target="_blank"
+                                class="flex items-center p-2 text-sm font-normal text-white rounded-lg transition duration-75 hover:text-gray-900 group group hover:bg-gray-100">
                                 <svg class="flex-shrink-0 w-5 h-5 text-white transition duration-75 group-hover:text-gray-900"
                                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"

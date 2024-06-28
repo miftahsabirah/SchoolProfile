@@ -184,13 +184,14 @@ Route::get('/adminkurikulum', function () {
     return view('admin/formKurikulum');
 })->name('adminkurikulum');
 
+Route::get('/adminvisimisi', function () {
+    return view('admin/formVisiMisi');
+})->name('adminvisimisi');
+
 Route::get('/adminsejarah', function () {
     return view('admin/formSejarah');
 })->name('adminsejarah');
 
-Route::get('/adminsejarah', function () {
-    return view('admin/formVisiMisi');
-})->name('adminsejarah');
 
 Route::get('/adminsambutan', function () {
     return view('admin/sambutan');

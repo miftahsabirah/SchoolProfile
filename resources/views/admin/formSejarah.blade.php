@@ -10,7 +10,9 @@ Form Sejarah
     <div class="w-full shadow-xl rounded-lg">
         <h2 class="text-sm font-medium px-6 py-3">Settings Sejarah</h2>
         <div class="bg-white p-6 rounded-br-lg rounded-bl-lg shadow-lg w-full">
-            <form>
+            <form id="sejarahForm" enctype="multipart/form-data">
+                @csrf
+
                 <div class="mb-5">
                     <label class="block text-sm font-medium text-gray-900 mb-2">Deskripsi</label>
                     <div class="w-full border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
@@ -91,43 +93,38 @@ Form Sejarah
                             </div>
                         </div>
                         <div class="px-4 py-2 bg-white rounded-b-lg dark:bg-gray-800">
-                            <label for="editor" class="sr-only">Publish post</label>
-                            <textarea id="editor" rows="8" class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Tambahkan deskripsi disini..." required ></textarea>
+                            <label for="deskripsi_sejarah" class="sr-only">Publish post</label>
+                            <textarea id="deskripsi_sejarah" name="deskripsi_sejarah" rows="8" class="block w-full px-0 text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Tambahkan deskripsi disini..." required ></textarea>
                         </div>
                     </div>
-                </div>
-
-                <div class="mb-5">
-                    <label for="tentangSekolah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Sekolah</label>
-                    <input type="text" id="tentangSekolah" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Tambahkan judul">
-                </div>
-
-                <div class="mb-5">
-                    <label for="nss" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Statistik Sekolah (NSS)</label>
-                    <input type="text" id="nss" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Tambahkan NSS">
-                </div>
-
-                <div class="mb-5">
-                    <label for="npsn" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor Pokok Sekolah Nasional (NPSN)</label>
-                    <input type="text" id="npsn" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Tambahkan NPSN">
-                </div>
-
-                <div class="mb-5">
-                    <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
-                    <input type="text" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Tambahkan status">
-                </div>
-
-                <div class="mb-8">
-                    <label for="statusGugus" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status dalam Gugus</label>
-                    <input type="text" id="statusGugus" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Tambahkan status gugus">
-                </div>
-
-                <div>
-                    <button type="submit" class="w-full bg-blue-700 text-white p-1.5 rounded-lg hover:bg-blue-800 mb-5">Save changes</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+    function fetchData() {
+        $.ajax({
+            url: 'http://127.0.0.1:8000/api/profile',
+            type: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                data = response[0];
+
+                $('#deskripsi_sejarah').val(data.deskripsi_sejarah);
+                
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('AJAX Error:', textStatus, errorThrown);
+            }
+        });
+    }
+
+    fetchData();
+    
+});
 
 @endsection

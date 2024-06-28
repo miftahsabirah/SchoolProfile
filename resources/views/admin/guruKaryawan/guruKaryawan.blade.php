@@ -134,7 +134,7 @@ Guru dan Karyawan
 
             $('.edit-btn').click(function() {
                 const id = $(this).attr('data-id');
-                window.location.href = `{{ url('/adminformeditGuruKaryawan') }}/${id}`;
+                window.location.href = `{{ url('/adminformeditgurukaryawan') }}/${id}`;
             });
 
             $('.delete-btn').click(function() {
