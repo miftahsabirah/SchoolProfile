@@ -19,10 +19,10 @@
         </div>
 
         <div class="flex justify-center mt-12">
-            <button type="button"
+            <a id="download_pdf" target="_blank"
                 class="text-white bg-orange-600 hover:bg-orange-700 focus:ring-4 focus:outline-none focus:ring-orange-300 font-semibold rounded-lg text-sm px-7 py-3 text-center inline-flex items-center">
                 Lihat Sertifikat
-            </button>
+            </a>
         </div>
     </div>
 @endsection
@@ -112,6 +112,8 @@
                         //     '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">' +
                         //     response.no_sertifikasi_iso + '</td>';
                         html += '</tr>';
+                        var downloadUrl = "http://localhost:8000/storage/akreditasi/" + response.file_berkas_akreditasi;
+                        $('#download_pdf').attr('href', downloadUrl);
 
                         $('#detailAkreditasiBody').html(html);
                     } else {
