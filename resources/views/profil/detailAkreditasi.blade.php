@@ -11,7 +11,7 @@
                 <div class="overflow-hidden">
                     <table class="min-w-full border-2 border-neutral-200 text-center text-sm font-light text-surface">
                         <tbody id="detailAkreditasiBody">
-                            <!-- Dynamic Content -->
+                            <!-- Konten Dinamis akan diisi dengan JavaScript -->
                         </tbody>
                     </table>
                 </div>
@@ -30,93 +30,98 @@
 @section('addScript')
     <script>
         $(document).ready(function() {
-            // Get the ID from the URL
-            var urlParams = new URLSearchParams(window.location.search);
-            var id = urlParams.get('id');
+            // Ekstrak ID dari URL
+            var currentUrl = window.location.href;
+            var id = currentUrl.substring(currentUrl.lastIndexOf('/') + 1);
 
-            if (id) {
-                $.ajax({
-                    url: "/getdetailakreditasi/" + id, // Ensure this matches your route
-                    type: "GET",
-                    dataType: "json",
-                    success: function(response) {
-                        if (response) {
-                            var html = '';
-                            html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">Naungan</td>';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">Kementerian Pendidikan dan Kebudayaan</td>';
-                            html += '</tr>';
+            console.log(currentUrl);
+            console.log(id);
 
-                            html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">No. SK. Pendirian</td>';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">' +
-                                response.no_sk_pendirian + '</td>';
-                            html += '</tr>';
-
-                            html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">Tanggal. SK. Pendirian</td>';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">' +
-                                response.tanggal_sk_pendirian + '</td>';
-                            html += '</tr>';
-
-                            html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">Tanggal SK. Operasional</td>';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">' +
-                                response.tanggal_sk_operasional + '</td>';
-                            html += '</tr>';
-
-                            html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">Akreditasi</td>';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">' +
-                                response.akreditasi + '</td>';
-                            html += '</tr>';
-
-                            html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">No. SK. Akreditasi</td>';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">' +
-                                response.no_sk_akreditasi + '</td>';
-                            html += '</tr>';
-
-                            html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">Tanggal SK. Akreditasi</td>';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">' +
-                                response.tanggal_sk_akreditasi + '</td>';
-                            html += '</tr>';
-
-                            html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">No. Sertifikasi ISO</td>';
-                            html +=
-                                '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">' +
-                                response.no_sertifikasi_iso + '</td>';
-                            html += '</tr>';
-
-                            $('#detailAkreditasiBody').html(html);
-                        } else {
-                            console.log("No data found for the given ID.");
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.log(error);
-                    }
-                });
-            } else {
-                console.log("No ID parameter found in the URL.");
+            // Periksa apakah ID tersedia
+            if (!id) {
+                console.log("ID tidak ditemukan di URL");
+                return;
             }
+
+            $.ajax({
+                url: "http://127.0.0.1:8000/api/getdetailakreditasi/" + id,
+                type: "GET",
+                dataType: "json",
+                success: function(response) {
+                    if (response) {
+                        var html = '';
+                        html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
+                        html +=
+                            '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">Naungan</td>';
+                        html +=
+                            '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">Kementerian Pendidikan dan Kebudayaan</td>';
+                        html += '</tr>';
+
+                        html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
+                        html +=
+                            '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">No. SK. Pendirian</td>';
+                        html +=
+                            '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">' +
+                            response.sk_pendirian_sekolah + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
+                        html +=
+                            '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">Tanggal. SK. Pendirian</td>';
+                        html +=
+                            '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">' +
+                            response.tanggal_sk_pendirian + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
+                        html +=
+                            '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">Tanggal SK. Operasional</td>';
+                        html +=
+                            '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">' +
+                            response.tanggal_sk_izin_operasional + '</td>';
+                        html += '</tr>';
+
+                        html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
+                        html +=
+                            '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">Akreditasi</td>';
+                        html +=
+                            '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">' +
+                            response.akreditasi + '</td>';
+                        html += '</tr>';
+
+                        // html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
+                        // html +=
+                        //     '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">No. SK. Akreditasi</td>';
+                        // html +=
+                        //     '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">' +
+                        //     response.sk_izin_operasional + '</td>';
+                        // html += '</tr>';
+
+                        // html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
+                        // html +=
+                        //     '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">Tanggal SK. Akreditasi</td>';
+                        // html +=
+                        //     '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">' +
+                        //     response.tanggal_sk_izin_operasional + '</td>';
+                        // html += '</tr>';
+
+                        // html += '<tr class="border-b border-neutral-200 dark:border-white/10">';
+                        // html +=
+                        //     '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 font-medium dark:border-white/10 text-left">No. Sertifikasi ISO</td>';
+                        // html +=
+                        //     '<td class="whitespace-nowrap border-e border-neutral-200 px-6 py-4 dark:border-white/10 text-left">' +
+                        //     response.no_sertifikasi_iso + '</td>';
+                        html += '</tr>';
+
+                        $('#detailAkreditasiBody').html(html);
+                    } else {
+                        console.log("Data tidak ditemukan untuk ID yang diberikan.");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+                }
+            });
         });
     </script>
 @endsection
