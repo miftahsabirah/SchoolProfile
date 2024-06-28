@@ -33,14 +33,8 @@
 
     <div class="mx-auto max-w-screen-xl my-px mt-3">
         <div id="animation-carousel" class="relative px-16 sm:px-24" data-carousel="slide">
-            <div class="overflow-hidden relative h-[75vh] rounded-lg">
-                <div class="grid hidden absolute inset-0 gap-8 transition-all duration-700 ease-linear transform lg:grid-cols-3"
-                    data-carousel-item="">
-                    <div class="block w-full h-full rounded-lg">
-                        <div class="flex flex-col overflow-hidden rounded-lg shadow-lg" id="informasi_">
-                        </div>
-                    </div>
-
+            <div class="overflow-hidden relative h-auto rounded-lg">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-6" id="informasi_">
                 </div>
             </div>
         </div>
@@ -69,7 +63,8 @@
                                     month: 'long',
                                     day: 'numeric'
                                 });
-
+                                html+= '<div class="block w-full h-full rounded-lg "id="informasi_">';
+                                html += '<div class="flex flex-col overflow-hidden rounded-lg shadow-lg" id="informasi_">';
                                 html += '<div class="flex-shrink-0">';
                                 html += '<img class="h-48 w-full object-cover" src="' + imgUrl +
                                     '" alt="">';
@@ -100,6 +95,8 @@
                                 html += '<time datetime="' + item.created_at + '">' + formattedDate +
                                     '</time>';
                                 html += '<span aria-hidden="true">·</span>';
+                                html += '</div>';
+                                html += '</div>';
                                 html += '</div>';
                                 html += '</div>';
                                 html += '</div>';

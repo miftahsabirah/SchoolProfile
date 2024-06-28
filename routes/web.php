@@ -72,7 +72,7 @@ Route::get('/organisasi/dewansekolah', function () {
 })->name('organisasi.dewansekolah');
 
 Route::get('/organisasi/bagan', function () {
-    return view('/organisasi/bagan');
+    return view('/organisasi/strukturBagan');
 })->name('organisasi.bagan');
 
 Route::get('/organisasi/tugas', function () {
@@ -97,7 +97,7 @@ Route::get('/berita', function () {
 })->name('berita');
 
 // admin galeri
-Route::get('/admingaleri', function () {
+Route::middleware('auth')->get('/admingaleri', function () {
     return view('admin/galeri/galeri');
 })->name('admingaleri');
 
