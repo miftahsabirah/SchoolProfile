@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Login Page</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -43,34 +44,39 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const jsonData = {
-                username: formData.get('username'),
-                password: formData.get('password')
-            };
-            fetch('http://127.0.0.1:8000/api/login', {
+        $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('#login-form').on('submit', function(e) {
+                var username = $('#username').val();
+                var password = $('#password').val();
+                e.preventDefault();
+                login(username, password);
+                return false;
+            });
+
+            function login(username, password) {
+                $.ajax({
                     method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
+                    url: 'http://127.0.0.1:8000/api/login',
+                    data: {
+                        'username': username,
+                        'password': password
                     },
-                    body: JSON.stringify(jsonData)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.token) {
-                        // Handle successful login, maybe store the token
-                        console.log('Login successful:', data.token);
-                        // Redirect to the /berita page
-                        window.location.href = '{{ route('admingaleri') }}'";
-                    } else {
-                        // Handle login failure
-                        console.error('Login failed:', data);
+                    success: function(response) {
+                        localStorage.setItem('token', response.token);
+                        window.location.href = "{{ route('admingaleri') }}"; // Rute yang benar
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Username and/or Password Incorrect');
+                        console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
                     }
-                })
-                .catch(error => console.error('Error:', error));
+                });
+            }
         });
     </script>
 </body>
